@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, User, Award, Briefcase, LayoutDashboard, MessageSquare, Mail, Sparkles, Sun, Moon } from 'lucide-react';
+import { Home, User, Award, Briefcase, LayoutDashboard, MessageSquare, Mail, Sparkles } from 'lucide-react';
 import { Github, Linkedin } from 'lucide-react';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 const navItems = [
   { name: 'Home', href: '/', icon: Home },
@@ -18,32 +18,9 @@ const navItems = [
 
 export default function ModernSidebar() {
   const pathname = usePathname();
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDark(true);
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-  };
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 bg-[#1d1d1f] text-gray-100 p-6 flex flex-col overflow-y-auto hidden lg:flex border-r border-gray-800/50">
+    <aside className="fixed left-0 top-0 h-screen w-72 bg-primary-50 dark:bg-primary-950 text-gray-900 dark:text-gray-100 p-6 flex flex-col overflow-y-auto hidden lg:flex">
       {/* Profile Section */}
       <div className="mb-8">
         <div className="relative mb-6">
@@ -55,29 +32,15 @@ export default function ModernSidebar() {
         </div>
 
         <div className="text-center">
-          <h2 className="text-lg font-semibold text-white mb-0.5">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-0.5">
             Razeen Iqbal
           </h2>
-          <p className="text-sm text-gray-400 mb-4">Data Engineer & AI Specialist</p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Data Engineer & AI Specialist</p>
 
           {/* Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-full transition-all duration-200 text-sm text-gray-300"
-            aria-label="Toggle theme"
-          >
-            {isDark ? (
-              <>
-                <Sun className="w-4 h-4" />
-                <span>Light Mode</span>
-              </>
-            ) : (
-              <>
-                <Moon className="w-4 h-4" />
-                <span>Dark Mode</span>
-              </>
-            )}
-          </button>
+          <div className="flex justify-center">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
 
@@ -91,11 +54,11 @@ export default function ModernSidebar() {
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 ${
                 isActive
-                  ? 'bg-white/10 text-white'
-                  : 'text-gray-400 hover:bg-white/5 hover:text-gray-300'
+                  ? 'bg-primary-200 dark:bg-primary-800 text-gray-900 dark:text-white'
+                  : 'text-gray-600 dark:text-gray-400 hover:bg-primary-100 dark:hover:bg-primary-900 hover:text-gray-900 dark:hover:text-gray-300'
               }`}
             >
-              <item.icon className={`w-5 h-5 ${isActive ? 'text-blue-400' : ''}`} />
+              <item.icon className={`w-5 h-5 ${isActive ? 'text-accent-blue' : ''}`} />
               <span className="text-sm font-medium">{item.name}</span>
             </Link>
           );
@@ -114,38 +77,38 @@ export default function ModernSidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="mt-6 pt-6 border-t border-white/5">
+      <div className="mt-6 pt-6 border-t border-primary-200 dark:border-primary-800">
         {/* Social Links */}
         <div className="flex items-center justify-center gap-2 mb-4">
           <a
             href="https://github.com/razeeniqbal"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 bg-white/5 hover:bg-white/10 rounded-full transition-all duration-200"
+            className="p-2.5 bg-primary-200 dark:bg-primary-800 hover:bg-primary-300 dark:hover:bg-primary-700 rounded-full transition-all duration-200"
             aria-label="GitHub"
           >
-            <Github className="w-4 h-4 text-gray-400" />
+            <Github className="w-4 h-4 text-gray-700 dark:text-gray-400" />
           </a>
           <a
             href="https://linkedin.com/in/razeeniqbal"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2.5 bg-white/5 hover:bg-white/10 rounded-full transition-all duration-200"
+            className="p-2.5 bg-primary-200 dark:bg-primary-800 hover:bg-primary-300 dark:hover:bg-primary-700 rounded-full transition-all duration-200"
             aria-label="LinkedIn"
           >
-            <Linkedin className="w-4 h-4 text-gray-400" />
+            <Linkedin className="w-4 h-4 text-gray-700 dark:text-gray-400" />
           </a>
           <a
             href="mailto:razeeniqbal98@gmail.com"
-            className="p-2.5 bg-white/5 hover:bg-white/10 rounded-full transition-all duration-200"
+            className="p-2.5 bg-primary-200 dark:bg-primary-800 hover:bg-primary-300 dark:hover:bg-primary-700 rounded-full transition-all duration-200"
             aria-label="Email"
           >
-            <Mail className="w-4 h-4 text-gray-400" />
+            <Mail className="w-4 h-4 text-gray-700 dark:text-gray-400" />
           </a>
         </div>
 
         {/* Copyright */}
-        <p className="text-xs text-center text-gray-500 leading-relaxed">
+        <p className="text-xs text-center text-gray-600 dark:text-gray-500 leading-relaxed">
           © 2025 Razeen Iqbal
           <br />
           All rights reserved.

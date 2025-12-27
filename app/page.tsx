@@ -2,10 +2,25 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import AOS from 'aos';
 import { ArrowRight, Code2, Database, Brain, Briefcase, Award, MessageSquare } from 'lucide-react';
 import { personalInfo, skills } from '@/lib/data';
+import GlitchText from '@/components/ui/GlitchText';
+import DecryptText from '@/components/ui/DecryptText';
+import MagicCard from '@/components/ui/MagicCard';
+import GlassCard from '@/components/ui/GlassCard';
+import GradientText from '@/components/ui/GradientText';
 
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      delay: 50,
+      once: true,
+    });
+  }, []);
+
   const features = [
     {
       icon: Briefcase,
@@ -75,10 +90,13 @@ export default function Home() {
 
           {/* Name & Title */}
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-            {personalInfo.name}
+            <GlitchText text={personalInfo.name} />
           </h1>
-          <p className="text-xl md:text-2xl text-primary-600 dark:text-primary-400 mb-6">
-            {personalInfo.role}
+          <p className="text-xl md:text-2xl mb-6">
+            <GradientText
+              text={personalInfo.role}
+              colors="from-accent-orange via-accent-purple to-accent-blue"
+            />
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
             📍 {personalInfo.location}
@@ -109,29 +127,31 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="bg-gray-50 dark:bg-slate-900/50 py-16">
+      <section className="bg-primary-100 dark:bg-primary-900/30 py-16">
         <div className="container-custom">
-          <h2 className="section-heading text-center mb-12">Tech Stack</h2>
+          <h2 className="section-heading text-center mb-12">
+            <DecryptText text="Tech Stack" speed={40} />
+          </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {skills.map((skill, index) => (
-              <motion.div
+              <div
                 key={skill.category}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                className="card p-6 text-center hover-lift"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
               >
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2 text-sm">
-                  {skill.category}
-                </h3>
-                <div className="flex flex-wrap justify-center gap-1">
-                  {skill.items.slice(0, 3).map((item) => (
-                    <span key={item} className="badge text-xs">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
+                <GlassCard className="p-6 text-center hover-lift rounded-xl">
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2 text-sm">
+                    {skill.category}
+                  </h3>
+                  <div className="flex flex-wrap justify-center gap-1">
+                    {skill.items.slice(0, 3).map((item) => (
+                      <span key={item} className="badge text-xs">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </GlassCard>
+              </div>
             ))}
           </div>
         </div>
@@ -142,30 +162,35 @@ export default function Home() {
         <h2 className="section-heading text-center mb-12">Explore</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              data-aos="zoom-in"
+              data-aos-delay={index * 100}
             >
               <Link href={feature.href}>
-                <div className="card p-6 hover-lift h-full group">
+                <MagicCard
+                  className="card p-6 h-full group"
+                  gradientColor={feature.color.includes('blue') ? '#3b82f6' :
+                               feature.color.includes('purple') ? '#a855f7' :
+                               feature.color.includes('orange') ? '#f97316' :
+                               feature.color.includes('green') ? '#4ade80' : '#14b8a6'}
+                >
                   <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4`}>
                     <feature.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-accent-blue dark:group-hover:text-accent-purple transition-colors">
                     {feature.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     {feature.description}
                   </p>
-                  <div className="mt-4 flex items-center text-primary-600 dark:text-primary-400 text-sm font-medium group-hover:gap-2 transition-all">
+                  <div className="mt-4 flex items-center text-accent-blue dark:text-accent-purple text-sm font-medium group-hover:gap-2 transition-all">
                     Learn more
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </div>
+                </MagicCard>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
