@@ -12,7 +12,8 @@
       "Bash(cat:*)",
       "Bash(dir:*)",
       "Bash(findstr:*)",
-      "Bash(timeout 10 cat:*)"
+      "Bash(timeout 10 cat:*)",
+      "Bash(del /f componentsuiDecryptText.tsx componentsuiScrambleText.tsx componentsuiShinyText.tsx componentsuiGlassCard.tsx componentsuiSpotlightCard.tsx componentsuiStarBorder.tsx componentsuiBentoGrid.tsx componentsuiPixelAvatar.tsx componentsuiRetroLoader.tsx)"
     ]
   }
 }

@@ -20,7 +20,7 @@ export default function ModernSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 bg-primary-50 dark:bg-primary-950 text-gray-900 dark:text-gray-100 p-6 flex flex-col overflow-y-auto hidden lg:flex">
+    <aside className="fixed left-1/2 -translate-x-[calc(50%+30rem)] top-8 bottom-8 w-72 bg-primary-50/80 dark:bg-primary-950/80 backdrop-blur-xl text-gray-900 dark:text-gray-100 p-6 flex flex-col overflow-hidden hidden lg:flex rounded-2xl shadow-2xl">
       {/* Profile Section */}
       <div className="mb-8">
         <div className="relative mb-6">

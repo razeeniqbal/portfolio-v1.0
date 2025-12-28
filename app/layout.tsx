@@ -32,8 +32,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <ModernSidebar />
         <MobileMenu />
-        <main className="min-h-screen lg:ml-72 bg-primary-50 dark:bg-primary-950">
-          <div className="pt-16 lg:pt-0">
+        <main className="min-h-screen bg-primary-50 dark:bg-primary-950">
+          <div className="pt-16 lg:pt-0 lg:max-w-3xl lg:mx-auto lg:translate-x-8">
             {children}
           </div>
         </main>

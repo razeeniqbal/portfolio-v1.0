@@ -6,11 +6,14 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import { ArrowRight, Code2, Database, Brain, Briefcase, Award, MessageSquare } from 'lucide-react';
 import { personalInfo, skills } from '@/lib/data';
+import { techStack, pythonStack } from '@/lib/skillsData';
 import GlitchText from '@/components/ui/GlitchText';
 import DecryptText from '@/components/ui/DecryptText';
 import MagicCard from '@/components/ui/MagicCard';
 import GlassCard from '@/components/ui/GlassCard';
 import GradientText from '@/components/ui/GradientText';
+import { AnimatedButton } from '@/components/ui/AnimatedButton';
+import SkillIcon from '@/components/ui/SkillIcon';
 
 export default function Home() {
   useEffect(() => {
@@ -69,12 +72,12 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="container-custom py-20 md:py-32">
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-4xl mx-auto text-center"
+          className="text-center"
         >
           {/* Profile Image */}
           <div className="mb-8 flex justify-center">
@@ -115,50 +118,66 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/projects" className="btn-primary inline-flex items-center gap-2">
+            <AnimatedButton href="/projects" variant="primary">
               View Projects
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link href="/contact" className="btn-secondary">
+            </AnimatedButton>
+            <AnimatedButton href="/contact" variant="secondary">
               Get in Touch
-            </Link>
+            </AnimatedButton>
           </div>
         </motion.div>
       </section>
 
       {/* Skills Section */}
-      <section className="bg-primary-100 dark:bg-primary-900/30 py-16">
-        <div className="container-custom">
-          <h2 className="section-heading text-center mb-12">
-            <DecryptText text="Tech Stack" speed={40} />
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {skills.map((skill, index) => (
-              <div
-                key={skill.category}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <GlassCard className="p-6 text-center hover-lift rounded-xl">
-                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2 text-sm">
-                    {skill.category}
-                  </h3>
-                  <div className="flex flex-wrap justify-center gap-1">
-                    {skill.items.slice(0, 3).map((item) => (
-                      <span key={item} className="badge text-xs">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </GlassCard>
-              </div>
+      <section className="bg-primary-50 dark:bg-primary-950 py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12" data-aos="fade-up">
+            <div className="flex items-center gap-3 mb-4">
+              <Code2 className="w-8 h-8 text-accent-blue" />
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                Skills
+              </h2>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400">
+              My professional skills.
+            </p>
+          </div>
+
+          {/* Tech Stack Icons Grid */}
+          <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] overflow-visible" data-aos="fade-up" data-aos-delay="100">
+            {techStack.map((skill, index) => (
+              <SkillIcon
+                key={skill.name}
+                name={skill.name}
+                icon={skill.icon}
+                color={skill.color}
+                delay={index * 0.02}
+              />
             ))}
+          </div>
+
+          {/* Python & Data Science Stack */}
+          <div className="mt-16" data-aos="fade-up" data-aos-delay="200">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center mb-8">
+              Data Science & Cloud
+            </h3>
+            <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] overflow-visible">
+              {pythonStack.map((skill, index) => (
+                <SkillIcon
+                  key={skill.name}
+                  name={skill.name}
+                  icon={skill.icon}
+                  color={skill.color}
+                  delay={index * 0.02}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Featured Sections */}
-      <section className="container-custom py-20">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <h2 className="section-heading text-center mb-12">Explore</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (

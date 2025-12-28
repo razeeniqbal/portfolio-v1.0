@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Neutral grayscale palette with vibrant accents (Satria-inspired)
+        // Neutral grayscale palette (Modern theme)
         primary: {
           50: '#fafafa',
           100: '#f5f5f5',
@@ -24,6 +24,7 @@ const config: Config = {
           900: '#171717',
           950: '#121212',
         },
+        // Modern accent colors
         accent: {
           orange: '#f97316',
           blue: '#3b82f6',
@@ -31,6 +32,15 @@ const config: Config = {
           green: '#4ade80',
           teal: '#14b8a6',
         },
+        // Retro color palette (Unified for legacy pages)
+        'burnt-orange': '#d97706',
+        'mustard-yellow': '#fbbf24',
+        'retro-teal': '#14b8a6',
+        'olive-green': '#84cc16',
+        'dark-brown': '#78350f',
+        'warm-beige': '#fef3c7',
+        'cream': '#fefce8',
+        'retro-brown': '#92400e',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
@@ -52,8 +62,6 @@ const config: Config = {
         'shine': 'shine 5s linear infinite',
         'gradient': 'gradient 8s linear infinite',
         'glitch': 'glitch 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite',
-        'star-bottom': 'star-movement-bottom 3s ease-out forwards',
-        'star-top': 'star-movement-top 3s ease-out forwards',
       },
       keyframes: {
         fadeIn: {
@@ -83,14 +91,6 @@ const config: Config = {
           '60%': { clipPath: 'inset(25% 0 58% 0)' },
           '80%': { clipPath: 'inset(54% 0 7% 0)' },
           '100%': { clipPath: 'inset(58% 0 43% 0)' },
-        },
-        'star-movement-bottom': {
-          '0%': { transform: 'translateX(0)', opacity: '1' },
-          '100%': { transform: 'translateX(-100px)', opacity: '0' },
-        },
-        'star-movement-top': {
-          '0%': { transform: 'translateX(0)', opacity: '1' },
-          '100%': { transform: 'translateX(100px)', opacity: '0' },
         },
       },
       backdropBlur: {
