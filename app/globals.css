@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
-@import 'aos/dist/aos.css';
 
 @tailwind base;
 @tailwind components;
@@ -111,21 +110,20 @@
   }
 }
 
-/* Custom scrollbar */
+/* Hide scrollbars but keep functionality */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
+  height: 0px;
 }
 
-::-webkit-scrollbar-track {
-  @apply bg-primary-100 dark:bg-primary-900;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-primary-400 dark:bg-primary-700 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary-500 dark:bg-primary-600;
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 /* Selection */

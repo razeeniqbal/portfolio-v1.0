@@ -3,16 +3,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-interface RetroButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface RetroButtonProps {
   variant?: 'primary' | 'secondary' | 'success' | 'danger';
   children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 const RetroButton: React.FC<RetroButtonProps> = ({
   variant = 'primary',
   children,
   className = '',
-  ...props
+  onClick,
+  type = 'button',
+  disabled = false,
 }) => {
   const variantStyles = {
     primary: 'bg-burnt-orange hover:bg-mustard-yellow',
@@ -25,6 +31,9 @@ const RetroButton: React.FC<RetroButtonProps> = ({
     <motion.button
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
       className={`
         retro-button
         ${variantStyles[variant]}
@@ -35,7 +44,6 @@ const RetroButton: React.FC<RetroButtonProps> = ({
         duration-100
         ${className}
       `}
-      {...props}
     >
       {children}
     </motion.button>

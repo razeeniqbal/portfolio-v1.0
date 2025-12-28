@@ -8,7 +8,8 @@ import { Github, ExternalLink, Code, Zap } from 'lucide-react';
 
 export default function ProjectsPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen bg-primary-50 dark:bg-primary-950">
+      <div className="container mx-auto px-4 py-12">
       {/* Page Header */}
       <div className="retro-box bg-mustard-yellow p-6 mb-12 text-center">
         <h1 className="pixel-font text-2xl md:text-3xl text-dark-brown">
@@ -166,6 +167,7 @@ export default function ProjectsPage() {
             GET IN TOUCH
           </RetroButton>
         </a>
+      </div>
       </div>
     </div>
   );

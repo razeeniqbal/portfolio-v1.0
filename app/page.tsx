@@ -2,27 +2,13 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
-import AOS from 'aos';
-import { ArrowRight, Code2, Database, Brain, Briefcase, Award, MessageSquare } from 'lucide-react';
-import { personalInfo, skills } from '@/lib/data';
+import { Code2, MapPin, Briefcase, Award, MessageSquare, Database, Brain } from 'lucide-react';
+import { personalInfo } from '@/lib/data';
 import { techStack, pythonStack } from '@/lib/skillsData';
-import GlitchText from '@/components/ui/GlitchText';
-import DecryptText from '@/components/ui/DecryptText';
-import MagicCard from '@/components/ui/MagicCard';
-import GlassCard from '@/components/ui/GlassCard';
-import GradientText from '@/components/ui/GradientText';
-import { AnimatedButton } from '@/components/ui/AnimatedButton';
 import SkillIcon from '@/components/ui/SkillIcon';
+import MagicCard from '@/components/ui/MagicCard';
 
 export default function Home() {
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-      delay: 50,
-      once: true,
-    });
-  }, []);
 
   const features = [
     {
@@ -31,6 +17,7 @@ export default function Home() {
       description: 'Explore my portfolio of data engineering and AI projects',
       href: '/projects',
       color: 'from-blue-500 to-cyan-500',
+      gradientColor: '#3b82f6',
     },
     {
       icon: Code2,
@@ -38,6 +25,7 @@ export default function Home() {
       description: 'Technologies and frameworks I work with',
       href: '/about',
       color: 'from-purple-500 to-pink-500',
+      gradientColor: '#a855f7',
     },
     {
       icon: Database,
@@ -45,6 +33,7 @@ export default function Home() {
       description: 'Real-time coding statistics and activity',
       href: '/dashboard',
       color: 'from-orange-500 to-red-500',
+      gradientColor: '#f97316',
     },
     {
       icon: Award,
@@ -52,6 +41,7 @@ export default function Home() {
       description: 'Certifications, awards, and milestones',
       href: '/achievements',
       color: 'from-green-500 to-emerald-500',
+      gradientColor: '#4ade80',
     },
     {
       icon: MessageSquare,
@@ -59,6 +49,7 @@ export default function Home() {
       description: 'Connect and chat in real-time',
       href: '/chat',
       color: 'from-indigo-500 to-blue-500',
+      gradientColor: '#6366f1',
     },
     {
       icon: Brain,
@@ -66,85 +57,63 @@ export default function Home() {
       description: 'Learn more about my journey and experience',
       href: '/about',
       color: 'from-pink-500 to-rose-500',
+      gradientColor: '#ec4899',
     },
   ];
 
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+    <div className="min-h-screen bg-primary-50 dark:bg-primary-950">
+      {/* Hero Section - Simple */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center"
         >
-          {/* Profile Image */}
-          <div className="mb-8 flex justify-center">
-            <div className="relative">
-              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 p-1">
-                <div className="w-full h-full rounded-full bg-white dark:bg-slate-900 flex items-center justify-center">
-                  <span className="text-4xl md:text-5xl font-bold text-gradient">RI</span>
-                </div>
-              </div>
-              <div className="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white dark:border-slate-900"></div>
+          {/* Greeting */}
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Hi, I'm {personalInfo.name}
+          </h1>
+
+          {/* Location & Status */}
+          <div className="flex flex-col gap-1 text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <div className="flex items-center gap-1.5">
+              <MapPin className="w-4 h-4" />
+              <span>Based in {personalInfo.location}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <span className="w-4 h-4 flex items-center justify-center">•</span>
+              <span>{personalInfo.status}</span>
             </div>
           </div>
 
-          {/* Name & Title */}
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-            <GlitchText text={personalInfo.name} />
-          </h1>
-          <p className="text-xl md:text-2xl mb-6">
-            <GradientText
-              text={personalInfo.role}
-              colors="from-accent-orange via-accent-purple to-accent-blue"
-            />
+          {/* Bio/Description */}
+          <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+            {personalInfo.role} passionate about building intelligent data solutions and transforming raw data into actionable insights.
+            Currently pursuing Master's in Artificial Intelligence with deep expertise in ETL pipelines, machine learning model development,
+            statistical analysis, and cloud-based data infrastructure. Experienced in designing scalable data architectures,
+            implementing automated workflows, and deploying AI-driven analytics solutions across AWS, Azure, and GCP platforms.
           </p>
-          <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">
-            📍 {personalInfo.location}
-          </p>
-
-          {/* Bio */}
-          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-            {personalInfo.bio}
-          </p>
-
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full mb-8">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium">{personalInfo.status}</span>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap justify-center gap-4">
-            <AnimatedButton href="/projects" variant="primary">
-              View Projects
-            </AnimatedButton>
-            <AnimatedButton href="/contact" variant="secondary">
-              Get in Touch
-            </AnimatedButton>
-          </div>
         </motion.div>
       </section>
 
       {/* Skills Section */}
-      <section className="bg-primary-50 dark:bg-primary-950 py-16">
+      <section className="bg-primary-50 dark:bg-primary-950 py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12" data-aos="fade-up">
-            <div className="flex items-center gap-3 mb-4">
-              <Code2 className="w-8 h-8 text-accent-blue" />
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <div className="mb-6">
+            <div className="flex items-center gap-2 mb-2">
+              <Code2 className="w-6 h-6 text-accent-blue" />
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                 Skills
               </h2>
             </div>
-            <p className="text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
               My professional skills.
             </p>
           </div>
 
           {/* Tech Stack Icons Grid */}
-          <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] overflow-visible" data-aos="fade-up" data-aos-delay="100">
+          <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] px-[2em]">
             {techStack.map((skill, index) => (
               <SkillIcon
                 key={skill.name}
@@ -157,11 +126,11 @@ export default function Home() {
           </div>
 
           {/* Python & Data Science Stack */}
-          <div className="mt-16" data-aos="fade-up" data-aos-delay="200">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white text-center mb-8">
+          <div className="mt-8">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center mb-4">
               Data Science & Cloud
             </h3>
-            <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] overflow-visible">
+            <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] px-[2em]">
               {pythonStack.map((skill, index) => (
                 <SkillIcon
                   key={skill.name}
@@ -176,40 +145,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Sections */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <h2 className="section-heading text-center mb-12">Explore</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Explore Section */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-12">
+        <div className="mb-6 text-center">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            Explore
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Discover my work, achievements, and more
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <div
-              key={feature.title}
-              data-aos="zoom-in"
-              data-aos-delay={index * 100}
-            >
-              <Link href={feature.href}>
-                <MagicCard
-                  className="card p-6 h-full group"
-                  gradientColor={feature.color.includes('blue') ? '#3b82f6' :
-                               feature.color.includes('purple') ? '#a855f7' :
-                               feature.color.includes('orange') ? '#f97316' :
-                               feature.color.includes('green') ? '#4ade80' : '#14b8a6'}
-                >
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4`}>
+            <Link key={feature.title} href={feature.href}>
+              <MagicCard
+                className="cursor-pointer group bg-white dark:bg-primary-900 rounded-xl border border-primary-200 dark:border-primary-800 shadow-card hover:shadow-card-hover"
+                gradientColor={feature.gradientColor}
+              >
+                <div className="p-6">
+                  <div className={`w-12 h-12 mb-4 rounded-lg bg-gradient-to-r ${feature.color} flex items-center justify-center`}>
                     <feature.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-accent-blue dark:group-hover:text-accent-purple transition-colors">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-accent-blue transition-colors">
                     {feature.title}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     {feature.description}
                   </p>
-                  <div className="mt-4 flex items-center text-accent-blue dark:text-accent-purple text-sm font-medium group-hover:gap-2 transition-all">
-                    Learn more
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </MagicCard>
-              </Link>
-            </div>
+                </div>
+              </MagicCard>
+            </Link>
           ))}
         </div>
       </section>

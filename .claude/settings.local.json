@@ -13,7 +13,13 @@
       "Bash(dir:*)",
       "Bash(findstr:*)",
       "Bash(timeout 10 cat:*)",
-      "Bash(del /f componentsuiDecryptText.tsx componentsuiScrambleText.tsx componentsuiShinyText.tsx componentsuiGlassCard.tsx componentsuiSpotlightCard.tsx componentsuiStarBorder.tsx componentsuiBentoGrid.tsx componentsuiPixelAvatar.tsx componentsuiRetroLoader.tsx)"
+      "Bash(del /f componentsuiDecryptText.tsx componentsuiScrambleText.tsx componentsuiShinyText.tsx componentsuiGlassCard.tsx componentsuiSpotlightCard.tsx componentsuiStarBorder.tsx componentsuiBentoGrid.tsx componentsuiPixelAvatar.tsx componentsuiRetroLoader.tsx)",
+      "Bash(npx next dev --turbopack=false)",
+      "Bash(del:*)",
+      "Bash(netstat:*)",
+      "Bash(grep:*)",
+      "Bash(uniq:*)",
+      "Bash(ls:*)"
     ]
   }
 }

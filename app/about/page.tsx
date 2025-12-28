@@ -7,7 +7,8 @@ import { Briefcase, Award, Languages, GraduationCap } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen bg-primary-50 dark:bg-primary-950">
+      <div className="container mx-auto px-4 py-12">
       {/* Page Header */}
       <div className="retro-box bg-burnt-orange p-6 mb-12 text-center">
         <h1 className="pixel-font text-2xl md:text-3xl text-cream">
@@ -164,6 +165,7 @@ export default function AboutPage() {
             </motion.div>
           ))}
         </div>
+      </div>
       </div>
     </div>
   );
