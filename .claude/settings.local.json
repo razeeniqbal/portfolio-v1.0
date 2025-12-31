@@ -27,7 +27,8 @@
       "Bash(set NODE_OPTIONS=--max-old-space-size=4096)",
       "Bash(npm run build:webpack:*)",
       "Bash(python3:*)",
-      "Bash(rmdir:*)"
+      "Bash(rmdir:*)",
+      "Bash(git config:*)"
     ]
   }
 }
