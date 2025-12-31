@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Code2, MapPin, Briefcase, Award, MessageSquare, Database, Brain } from 'lucide-react';
 import { personalInfo } from '@/lib/data';
-import { techStack, pythonStack } from '@/lib/skillsData';
+import { pythonStack } from '@/lib/skillsData';
 import SkillIcon from '@/components/ui/SkillIcon';
 import MagicCard from '@/components/ui/MagicCard';
 
@@ -99,22 +99,22 @@ export default function Home() {
 
       {/* Skills Section */}
       <section className="bg-primary-50 dark:bg-primary-950 py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <div className="flex items-center gap-2 mb-2">
               <Code2 className="w-6 h-6 text-accent-blue" />
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Skills
+                Tech Stack
               </h2>
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              My professional skills.
+              Technologies and tools I work with.
             </p>
           </div>
 
           {/* Tech Stack Icons Grid */}
-          <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] px-[2em]">
-            {techStack.map((skill, index) => (
+          <div className="flex flex-wrap justify-center gap-x-[2em] gap-y-[2.5em] py-[2em] px-[2em]">
+            {pythonStack.map((skill, index) => (
               <SkillIcon
                 key={skill.name}
                 name={skill.name}
@@ -123,24 +123,6 @@ export default function Home() {
                 delay={index * 0.02}
               />
             ))}
-          </div>
-
-          {/* Python & Data Science Stack */}
-          <div className="mt-8">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center mb-4">
-              Data Science & Cloud
-            </h3>
-            <div className="flex flex-wrap justify-center gap-x-[3em] gap-y-[4em] py-[2em] px-[2em]">
-              {pythonStack.map((skill, index) => (
-                <SkillIcon
-                  key={skill.name}
-                  name={skill.name}
-                  icon={skill.icon}
-                  color={skill.color}
-                  delay={index * 0.02}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>

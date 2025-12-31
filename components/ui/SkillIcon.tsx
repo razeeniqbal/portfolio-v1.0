@@ -17,7 +17,7 @@ export default function SkillIcon({ name, icon, color, delay = 0 }: SkillIconPro
       transition={{ duration: 0.3, delay }}
       type="button"
       aria-label={name}
-      className="relative bg-transparent outline-none border-none cursor-pointer w-[3.5em] h-[3.5em] [perspective:20em] [transform-style:preserve-3d] group"
+      className="relative bg-transparent outline-none border-none cursor-pointer w-[2.8em] h-[2.8em] [perspective:20em] [transform-style:preserve-3d] group"
     >
       {/* Background Shadow Layer */}
       <span
@@ -39,7 +39,7 @@ export default function SkillIcon({ name, icon, color, delay = 0 }: SkillIconPro
           <img
             src={icon}
             alt={name}
-            className="w-full h-full object-contain brightness-0 dark:brightness-0 invert-0 dark:invert transition-all duration-300"
+            className="w-full h-full object-contain transition-all duration-300"
           />
         </span>
       </span>

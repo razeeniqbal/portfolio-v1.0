@@ -1,208 +1,124 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import RetroCard from '@/components/ui/RetroCard';
-import { achievements, certifications } from '@/lib/data';
-import { Trophy, Award, Star, Medal } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { Search, Award, Filter } from 'lucide-react';
+import { achievements, Achievement } from '@/lib/achievementsData';
+import { AchievementCard } from '@/components/ui/AchievementCard';
 
 export default function AchievementsPage() {
-  const iconMap: Record<string, any> = {
-    '🏆': Trophy,
-    '🎤': Star,
-    '🥉': Medal,
-  };
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  // Filter and search achievements
+  const filteredAchievements = useMemo(() => {
+    return achievements.filter((achievement) => {
+      // Category filter
+      const categoryMatch = selectedCategory === 'all' || achievement.category === selectedCategory;
+
+      // Search filter
+      const searchLower = searchQuery.toLowerCase();
+      const searchMatch = searchQuery === '' ||
+        achievement.title.toLowerCase().includes(searchLower) ||
+        achievement.organization.toLowerCase().includes(searchLower) ||
+        achievement.description.toLowerCase().includes(searchLower) ||
+        achievement.credentialId?.toLowerCase().includes(searchLower);
+
+      return categoryMatch && searchMatch;
+    });
+  }, [searchQuery, selectedCategory]);
+
+  const categories = [
+    { value: 'all', label: 'All Achievements', count: achievements.length },
+    { value: 'certification', label: 'Certifications', count: achievements.filter(a => a.category === 'certification').length },
+    { value: 'award', label: 'Awards', count: achievements.filter(a => a.category === 'award').length },
+    { value: 'course', label: 'Courses', count: achievements.filter(a => a.category === 'course').length },
+    { value: 'achievement', label: 'Achievements', count: achievements.filter(a => a.category === 'achievement').length },
+  ];
 
   return (
     <div className="min-h-screen bg-primary-50 dark:bg-primary-950">
       <div className="container mx-auto px-4 py-12">
-      {/* Page Header */}
-      <div className="retro-box bg-mustard-yellow p-6 mb-12 text-center">
-        <h1 className="pixel-font text-2xl md:text-3xl text-dark-brown">
-          🏆 ACHIEVEMENT.HALL 🏆
-        </h1>
-        <p className="mt-2 text-dark-brown">My milestones, awards, and accomplishments</p>
-      </div>
-
-      {/* Trophy Case */}
-      <div className="mb-16">
-        <div className="retro-box bg-burnt-orange p-4 mb-8 text-center">
-          <h2 className="pixel-font text-sm md:text-base text-cream">
-            TROPHY CASE
-          </h2>
+        {/* Page Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-gray-900 dark:bg-gray-100 p-2 rounded">
+              <Award className="w-6 h-6 text-white dark:text-gray-900" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Achievements</h1>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                A curated collection of certificates and badges I've earned throughout my professional and academic journey.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {achievements.map((achievement, index) => {
-            const IconComponent = iconMap[achievement.icon] || Trophy;
+        {/* Search and Filter Section */}
+        <div className="mb-8 space-y-4">
+          {/* Search Bar */}
+          <div className="relative max-w-2xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 bg-white dark:bg-gray-900/80 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white placeholder-gray-500"
+            />
+          </div>
 
-            return (
-              <motion.div
-                key={achievement.id}
-                initial={{ opacity: 0, scale: 0.8, rotateY: 90 }}
-                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                transition={{
-                  delay: index * 0.2,
-                  type: 'spring',
-                  stiffness: 100,
-                }}
-              >
-                <RetroCard
-                  className="h-full relative overflow-hidden"
-                  hover={true}
-                >
-                  {/* Trophy Display */}
-                  <div className="retro-box bg-gradient-to-br from-mustard-yellow to-burnt-orange p-6 mb-4 text-center">
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 5, -5, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatDelay: 1,
-                      }}
-                      className="inline-block"
-                    >
-                      <IconComponent className="text-cream" size={64} />
-                    </motion.div>
-                  </div>
-
-                  {/* Achievement Details */}
-                  <div className="text-center">
-                    <div className="inline-block px-3 py-1 bg-dark-brown mb-3">
-                      <span className="pixel-font text-[8px] text-mustard-yellow">
-                        {achievement.type.toUpperCase()}
-                      </span>
-                    </div>
-
-                    <h3 className="pixel-font text-xs text-dark-brown mb-2">
-                      {achievement.title}
-                    </h3>
-
-                    <p className="text-sm text-dark-brown mb-3">
-                      {achievement.description}
-                    </p>
-
-                    <div className="retro-box bg-warm-beige p-2 inline-block">
-                      <p className="text-xs font-bold text-burnt-orange">
-                        {achievement.date}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Sparkle Effect */}
-                  <div className="absolute top-2 right-2">
-                    <motion.div
-                      animate={{
-                        opacity: [0, 1, 0],
-                        scale: [0.5, 1, 0.5],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.3,
-                      }}
-                    >
-                      <Star className="text-mustard-yellow" size={16} />
-                    </motion.div>
-                  </div>
-                </RetroCard>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Certification Wall */}
-      <div className="mb-16">
-        <div className="retro-box bg-retro-teal p-4 mb-8 text-center">
-          <h2 className="pixel-font text-sm md:text-base text-cream">
-            CERTIFICATION WALL
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {certifications.map((cert, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
+          {/* Category Filter */}
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <Filter className="w-5 h-5" />
+              <span className="text-sm font-medium">Filter achievements...</span>
+            </div>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="px-4 py-2 bg-white dark:bg-gray-900/80 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white text-sm"
             >
-              {/* Certificate Frame */}
-              <div className="border-8 border-retro-brown bg-cream p-4 shadow-retro-lg">
-                <div className="border-2 border-mustard-yellow p-4 text-center">
-                  <Award className="text-burnt-orange mx-auto mb-3" size={40} />
+              {categories.map((category) => (
+                <option key={category.value} value={category.value}>
+                  {category.label} ({category.count})
+                </option>
+              ))}
+            </select>
+          </div>
 
-                  <h3 className="pixel-font text-[10px] text-dark-brown mb-2">
-                    {cert.name}
-                  </h3>
+          {/* Results Count */}
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <span className="font-medium">Total: {filteredAchievements.length}</span>
+            {searchQuery && (
+              <span>
+                • Showing results for "{searchQuery}"
+              </span>
+            )}
+          </div>
+        </div>
 
-                  <div className="h-px bg-dark-brown my-3" />
-
-                  <p className="text-xs font-bold text-burnt-orange mb-1">
-                    {cert.org}
-                  </p>
-
-                  <p className="text-xs text-dark-brown">
-                    {cert.year}
-                  </p>
-
-                  {/* Decorative Seal */}
-                  <div className="mt-4">
-                    <div className="w-12 h-12 rounded-full border-3 border-burnt-orange bg-mustard-yellow mx-auto flex items-center justify-center">
-                      <span className="pixel-font text-[8px] text-dark-brown">
-                        ✓
-                      </span>
-                    </div>
-                  </div>
-                </div>
+        {/* Achievements Grid */}
+        {filteredAchievements.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredAchievements.map((achievement) => (
+              <div key={achievement.id} className="h-full">
+                <AchievementCard achievement={achievement} />
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Stats Overview */}
-      <div className="retro-box bg-olive-green p-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div>
-            <p className="pixel-font text-3xl md:text-4xl text-cream mb-2">
-              {achievements.length}
-            </p>
-            <p className="text-xs text-cream">Major Awards</p>
+            ))}
           </div>
-          <div>
-            <p className="pixel-font text-3xl md:text-4xl text-cream mb-2">
-              {certifications.length}
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-24 h-24 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+              <Search className="w-12 h-12 text-gray-400" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              No achievements found
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 text-center max-w-md">
+              Try adjusting your search query or filter to find what you're looking for.
             </p>
-            <p className="text-xs text-cream">Certifications</p>
           </div>
-          <div>
-            <p className="pixel-font text-3xl md:text-4xl text-cream mb-2">
-              3
-            </p>
-            <p className="text-xs text-cream">Years Experience</p>
-          </div>
-          <div>
-            <p className="pixel-font text-3xl md:text-4xl text-cream mb-2">
-              10M+
-            </p>
-            <p className="text-xs text-cream">Records Analyzed</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Under Construction Note */}
-      <div className="mt-12 text-center">
-        <div className="inline-block retro-box bg-mustard-yellow p-4">
-          <p className="pixel-font text-[10px] text-dark-brown">
-            🎯 MORE ACHIEVEMENTS COMING SOON!
-          </p>
-        </div>
-      </div>
+        )}
       </div>
     </div>
   );

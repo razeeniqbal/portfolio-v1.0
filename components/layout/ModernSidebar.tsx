@@ -12,7 +12,6 @@ const navItems = [
   { name: 'Achievements', href: '/achievements', icon: Award },
   { name: 'Projects', href: '/projects', icon: Briefcase },
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Chat Room', href: '/chat', icon: MessageSquare },
   { name: 'Contact', href: '/contact', icon: Mail },
 ];
 
@@ -68,14 +67,14 @@ export default function ModernSidebar() {
           );
         })}
 
-        {/* Smart Talk - Special Button */}
+        {/* Come Talk to My AI Bot - Special Button */}
         <div className="pt-1">
           <Link
             href="/smart-talk"
             className="flex items-center gap-2.5 px-2.5 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white transition-all duration-200 shadow-lg"
           >
             <Sparkles className="w-4 h-4" />
-            <span className="text-xs font-medium">Smart Talk</span>
+            <span className="text-xs font-medium">Talk to My AI Bot</span>
           </Link>
         </div>
       </nav>

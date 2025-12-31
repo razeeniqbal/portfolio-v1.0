@@ -1,173 +1,164 @@
 'use client';
 
+import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import RetroCard from '@/components/ui/RetroCard';
-import RetroButton from '@/components/ui/RetroButton';
-import { projects, experiences } from '@/lib/data';
-import { Github, ExternalLink, Code, Zap } from 'lucide-react';
+import { Search, Briefcase, Filter, Sparkles } from 'lucide-react';
+import { projects, projectCategories, Project } from '@/lib/projectsData';
+import { ProjectCard } from '@/components/ui/ProjectCard';
 
 export default function ProjectsPage() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
+
+  // Filter and search projects
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      // Category filter
+      const categoryMatch = selectedCategory === 'all' || project.category === selectedCategory;
+
+      // Featured filter
+      const featuredMatch = !showFeaturedOnly || project.featured;
+
+      // Search filter
+      const searchLower = searchQuery.toLowerCase();
+      const searchMatch = searchQuery === '' ||
+        project.title.toLowerCase().includes(searchLower) ||
+        project.description.toLowerCase().includes(searchLower) ||
+        project.tags.some(tag => tag.toLowerCase().includes(searchLower)) ||
+        project.techStack.some(tech => tech.toLowerCase().includes(searchLower));
+
+      return categoryMatch && featuredMatch && searchMatch;
+    });
+  }, [searchQuery, selectedCategory, showFeaturedOnly]);
+
+  const featuredProjects = projects.filter(p => p.featured);
+
   return (
     <div className="min-h-screen bg-primary-50 dark:bg-primary-950">
       <div className="container mx-auto px-4 py-12">
-      {/* Page Header */}
-      <div className="retro-box bg-mustard-yellow p-6 mb-12 text-center">
-        <h1 className="pixel-font text-2xl md:text-3xl text-dark-brown">
-          PROJECTS.PORTFOLIO
-        </h1>
-        <p className="mt-2 text-dark-brown">My work, research, and side projects</p>
-      </div>
-
-      {/* Research Projects */}
-      <div className="mb-16">
-        <div className="retro-box bg-burnt-orange p-4 mb-6">
-          <h2 className="pixel-font text-sm md:text-base text-cream flex items-center gap-2">
-            <Zap size={20} />
-            RESEARCH & ACADEMIC PROJECTS
-          </h2>
+        {/* Page Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="bg-gray-900 dark:bg-gray-100 p-2 rounded">
+              <Briefcase className="w-6 h-6 text-white dark:text-gray-900" />
+            </div>
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Projects</h1>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                A showcase of both private and open-source projects I've built or contributed to.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
+        {/* Search and Filter Section */}
+        <div className="mb-8 space-y-4">
+          {/* Search Bar */}
+          <div className="relative max-w-2xl">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 bg-white dark:bg-gray-900/80 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white placeholder-gray-500"
+            />
+          </div>
+
+          {/* Category Filter and Featured Toggle */}
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <Filter className="w-5 h-5" />
+              <span className="text-sm font-medium">Filter:</span>
+            </div>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="px-4 py-2 bg-white dark:bg-gray-900/80 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white text-sm"
             >
-              {/* Polaroid Style Card */}
-              <div className="polaroid hover:rotate-2 transition-transform">
-                <div className="bg-gradient-to-br from-retro-teal to-olive-green h-48 flex items-center justify-center">
-                  <Code className="text-cream" size={80} />
-                </div>
-                <div className="p-6 bg-white">
-                  <h3 className="pixel-font text-xs text-dark-brown mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-[10px] text-burnt-orange font-bold mb-3">
-                    {project.type}
-                  </p>
-                  <p className="text-sm text-dark-brown mb-3">
-                    {project.description}
-                  </p>
+              {projectCategories.map((category) => (
+                <option key={category.value} value={category.value}>
+                  {category.label}
+                </option>
+              ))}
+            </select>
 
-                  {project.achievement && (
-                    <div className="retro-box bg-olive-green p-2 mb-3">
-                      <p className="text-xs text-cream font-bold">
-                        🏆 {project.achievement}
-                      </p>
-                    </div>
-                  )}
-
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {project.tech.map((tech, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-warm-beige border-2 border-dark-brown text-[10px] text-dark-brown"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {(project.github || project.demo) && (
-                    <div className="flex gap-2">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1"
-                        >
-                          <RetroButton variant="primary" className="w-full text-[8px] py-2">
-                            <Github size={12} className="inline mr-1" />
-                            CODE
-                          </RetroButton>
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex-1"
-                        >
-                          <RetroButton variant="secondary" className="w-full text-[8px] py-2">
-                            <ExternalLink size={12} className="inline mr-1" />
-                            DEMO
-                          </RetroButton>
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Professional Projects */}
-      <div>
-        <div className="retro-box bg-retro-teal p-4 mb-6">
-          <h2 className="pixel-font text-sm md:text-base text-cream flex items-center gap-2">
-            <Code size={20} />
-            PROFESSIONAL WORK
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.15 }}
+            {/* Featured Toggle */}
+            <button
+              onClick={() => setShowFeaturedOnly(!showFeaturedOnly)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                showFeaturedOnly
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30'
+                  : 'bg-white dark:bg-gray-900/80 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400'
+              }`}
             >
-              <RetroCard className="h-full" hover={true}>
-                <div
-                  className={`h-3 bg-gradient-to-r ${exp.color} mb-4`}
-                />
-                <h3 className="pixel-font text-xs text-dark-brown mb-2">
-                  {exp.company}
-                </h3>
-                <p className="text-sm font-bold text-burnt-orange mb-2">
-                  {exp.title}
-                </p>
-                <p className="text-xs text-dark-brown mb-3">
-                  {exp.description}
-                </p>
-                <div className="retro-box bg-warm-beige p-2">
-                  <ul className="space-y-1">
-                    {exp.highlights.slice(0, 2).map((highlight, i) => (
-                      <li key={i} className="text-[10px] text-dark-brown flex items-start gap-1">
-                        <span>✓</span>
-                        <span>{highlight}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </RetroCard>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+              <Sparkles className="w-4 h-4" />
+              Featured Only ({featuredProjects.length})
+            </button>
+          </div>
 
-      {/* CTA Section */}
-      <div className="mt-16 retro-box bg-olive-green p-8 text-center">
-        <h2 className="pixel-font text-base md:text-lg text-cream mb-4">
-          GOT A PROJECT IN MIND?
-        </h2>
-        <p className="text-cream mb-6 max-w-2xl mx-auto">
-          I'm always interested in collaborating on exciting data engineering and AI projects.
-          Let's build something amazing together!
-        </p>
-        <a href="/contact">
-          <RetroButton variant="primary" className="text-[10px]">
-            GET IN TOUCH
-          </RetroButton>
-        </a>
-      </div>
+          {/* Results Count */}
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <span className="font-medium">Total: {filteredProjects.length}</span>
+            {searchQuery && (
+              <span>
+                • Showing results for "{searchQuery}"
+              </span>
+            )}
+          </div>
+        </div>
+
+        {/* Projects Grid */}
+        {filteredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="h-full"
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-20">
+            <div className="w-24 h-24 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center mb-4">
+              <Search className="w-12 h-12 text-gray-400" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+              No projects found
+            </h3>
+            <p className="text-gray-600 dark:text-gray-400 text-center max-w-md">
+              Try adjusting your search query or filters to find what you're looking for.
+            </p>
+          </div>
+        )}
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white"
+        >
+          <h2 className="text-2xl font-bold mb-4">
+            Got a Project in Mind?
+          </h2>
+          <p className="mb-6 max-w-2xl mx-auto text-blue-50">
+            I'm always interested in collaborating on exciting data engineering, AI, and web development projects.
+            Let's build something amazing together!
+          </p>
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
+          >
+            Get in Touch
+          </a>
+        </motion.div>
       </div>
     </div>
   );

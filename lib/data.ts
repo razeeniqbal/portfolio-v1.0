@@ -146,6 +146,94 @@ export const achievements: Achievement[] = [
   },
 ];
 
+export const education = [
+  {
+    step: 'Step 1',
+    title: 'Bachelor in Civil Engineering',
+    content: 'University Malaysia Pahang Al-Sultan Abdullah (UMPSA) • 2018-2022 • CGPA: 3.42',
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    step: 'Step 2',
+    title: 'Master in Artificial Intelligence',
+    content: 'University Malaysia Pahang Al-Sultan Abdullah (UMPSA) • 2023-Present • CGPA: 3.68',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop'
+  },
+  {
+    step: 'Step 3',
+    title: 'Continuous Learning',
+    content: 'Professional certifications and hands-on experience in Data Engineering, ML, and Cloud Platforms',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop'
+  },
+];
+
+export const educationCards = [
+  {
+    institution: 'University Malaysia Pahang Al-Sultan Abdullah',
+    degree: 'Master',
+    field: 'Artificial Intelligence',
+    period: '2023 - Present',
+    location: 'Pekan, Pahang',
+    logo: undefined
+  },
+  {
+    institution: 'University Malaysia Pahang Al-Sultan Abdullah',
+    degree: 'Bachelor',
+    field: 'Civil Engineering',
+    period: '2018 - 2022',
+    location: 'Pekan, Pahang',
+    logo: undefined
+  },
+];
+
+export const careers = [
+  {
+    company: 'AEM Energy Solutions',
+    role: 'Data Engineer',
+    period: 'Jun 2025 - Present',
+    location: 'Kuala Lumpur, Malaysia',
+    type: 'Full-time' as const,
+    logo: undefined,
+    responsibilities: [
+      'Design and implement end-to-end data pipelines for oil & gas analytics',
+      'Automate ETL processes reducing data preparation time by 30%',
+      'Develop and maintain Power BI dashboards for real-time monitoring',
+      'Successfully migrated legacy SQL databases to NoSQL architecture',
+      'Collaborate with cross-functional teams to optimize data workflows'
+    ]
+  },
+  {
+    company: 'EISmartwork',
+    role: 'Data Analyst',
+    period: 'May 2024 - May 2025',
+    location: 'Kuala Lumpur, Malaysia',
+    type: 'Onsite' as const,
+    logo: undefined,
+    responsibilities: [
+      'Built machine learning models on datasets with 10M+ records',
+      'Created interactive dashboards that improved reporting speed by 50%',
+      'Optimized ELT pipelines resulting in 40% faster query performance',
+      'Conducted statistical analysis and data visualization for business insights',
+      'Increased operational efficiency by 20% through data-driven recommendations'
+    ]
+  },
+  {
+    company: 'G&P Geotechnic',
+    role: 'Engineer',
+    period: 'Aug 2022 - May 2024',
+    location: 'Kuala Lumpur, Malaysia',
+    type: 'Onsite' as const,
+    logo: undefined,
+    responsibilities: [
+      'Performed data analysis and visualization for engineering projects',
+      'Automated workflows using Python and VBA Excel reducing manual effort by 30%',
+      'Developed high-accuracy analysis tools for geotechnical assessments',
+      'Successfully transitioned from engineering to data science role',
+      'Collaborated with engineering teams on data-driven project optimization'
+    ]
+  },
+];
+
 export const personalInfo = {
   name: 'Razeen Iqbal',
   role: 'Data Engineer & AI Specialist',

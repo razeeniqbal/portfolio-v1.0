@@ -14,7 +14,6 @@ const navItems = [
   { name: 'Achievements', href: '/achievements', icon: Award },
   { name: 'Projects', href: '/projects', icon: Briefcase },
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'Chat Room', href: '/chat', icon: MessageSquare },
   { name: 'Contact', href: '/contact', icon: Mail },
 ];
 
@@ -115,14 +114,14 @@ export default function MobileMenu() {
                   );
                 })}
 
-                {/* Smart Talk */}
+                {/* Come Talk to My AI Bot */}
                 <Link
                   href="/smart-talk"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center gap-3 px-4 py-3 rounded-lg bg-gradient-to-r from-green-600 to-emerald-600 text-white transition-all duration-200 mt-4"
                 >
                   <Sparkles className="w-5 h-5" />
-                  <span className="font-medium">Smart Talk</span>
+                  <span className="font-medium">Talk to My AI Bot</span>
                 </Link>
               </nav>
 

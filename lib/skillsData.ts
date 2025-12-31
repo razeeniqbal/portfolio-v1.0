@@ -37,16 +37,54 @@ export const techStack: TechSkill[] = [
   { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', color: 'linear-gradient(135deg, #181717 0%, #4d4d4d 100%)' },
 ];
 
-// Python & Data Science specific (for your portfolio)
+// Main tech stack (matching your skill set)
 export const pythonStack: TechSkill[] = [
-  { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: 'linear-gradient(135deg, #306998 0%, #FFD43B 100%)' },
-  { name: 'Pandas', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg', color: 'linear-gradient(135deg, #150458 0%, #E70488 100%)' },
-  { name: 'NumPy', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg', color: 'linear-gradient(135deg, #013243 0%, #4DABCF 100%)' },
-  { name: 'Scikit-learn', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg', color: 'linear-gradient(135deg, #F7931E 0%, #F89939 100%)' },
-  { name: 'TensorFlow', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: 'linear-gradient(135deg, #FF6F00 0%, #FFA726 100%)' },
-  { name: 'PyTorch', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', color: 'linear-gradient(135deg, #EE4C2C 0%, #FF6F3C 100%)' },
-  { name: 'Jupyter', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg', color: 'linear-gradient(135deg, #F37626 0%, #F89939 100%)' },
-  { name: 'Azure', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', color: 'linear-gradient(135deg, #0078D4 0%, #50E6FF 100%)' },
-  { name: 'AWS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg', color: 'linear-gradient(135deg, #FF9900 0%, #F90 100%)' },
-  { name: 'GCP', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg', color: 'linear-gradient(135deg, #4285F4 0%, #34A853 100%)' },
+  // Programming Languages
+  { name: 'C++', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/cplusplus-colored.svg', color: 'linear-gradient(135deg, #00599C 0%, #004482 100%)' },
+  { name: 'Python', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg', color: 'linear-gradient(135deg, #306998 0%, #FFD43B 100%)' },
+  { name: 'R', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/rlang-colored.svg', color: 'linear-gradient(135deg, #276DC3 0%, #4285F4 100%)' },
+  { name: 'TypeScript', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg', color: 'linear-gradient(135deg, #007acc 0%, #3178c6 100%)' },
+  { name: 'JavaScript', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg', color: 'linear-gradient(135deg, #f0db4f 0%, #f7df1e 100%)' },
+  { name: 'Git', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg', color: 'linear-gradient(135deg, #F05032 0%, #F34F29 100%)' },
+  { name: 'Java', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg', color: 'linear-gradient(135deg, #007396 0%, #EA2D2E 100%)' },
+  { name: 'Bash', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/gnubash-colored.svg', color: 'linear-gradient(135deg, #4EAA25 0%, #293137 100%)' },
+
+  // Development Tools
+  { name: 'VS Code', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/visualstudiocode-colored.svg', color: 'linear-gradient(135deg, #007ACC 0%, #0098FF 100%)' },
+  { name: 'HTML5', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg', color: 'linear-gradient(135deg, #e34c26 0%, #f06529 100%)' },
+  { name: 'React', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg', color: 'linear-gradient(135deg, #61dafb 0%, #149eca 100%)' },
+  { name: 'Node.js', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg', color: 'linear-gradient(135deg, #026e00 0%, #68a063 100%)' },
+
+  // Frameworks & APIs
+  { name: 'FastAPI', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/fastapi-colored.svg', color: 'linear-gradient(135deg, #009688 0%, #05998B 100%)' },
+  { name: 'GraphQL', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/graphql-colored.svg', color: 'linear-gradient(135deg, #E10098 0%, #C10098 100%)' },
+
+  // Databases
+  { name: 'MySQL', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg', color: 'linear-gradient(135deg, #00758f 0%, #4479a1 100%)' },
+  { name: 'PostgreSQL', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg', color: 'linear-gradient(135deg, #336791 0%, #4169E1 100%)' },
+  { name: 'Supabase', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/supabase-colored.svg', color: 'linear-gradient(135deg, #3ecf8e 0%, #38b2ac 100%)' },
+
+  // Design & Creative
+  { name: 'Photoshop', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/photoshop-colored-dark.svg', color: 'linear-gradient(135deg, #31A8FF 0%, #001E36 100%)' },
+  { name: 'Illustrator', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/illustrator-colored-dark.svg', color: 'linear-gradient(135deg, #FF9A00 0%, #330000 100%)' },
+  { name: 'After Effects', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/aftereffects-colored-dark.svg', color: 'linear-gradient(135deg, #9999FF 0%, #00005B 100%)' },
+  { name: 'Premiere Pro', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/premierepro-colored-dark.svg', color: 'linear-gradient(135deg, #9999FF 0%, #00005B 100%)' },
+  { name: 'Figma', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg', color: 'linear-gradient(135deg, #f24e1e 0%, #a259ff 100%)' },
+
+  // Cloud Platforms
+  { name: 'Google Cloud', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/googlecloud-colored.svg', color: 'linear-gradient(135deg, #4285F4 0%, #34A853 100%)' },
+  { name: 'Azure', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/azure-colored.svg', color: 'linear-gradient(135deg, #0078D4 0%, #50E6FF 100%)' },
+
+  // Hardware & Additional
+  { name: 'Arduino', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/arduino-colored.svg', color: 'linear-gradient(135deg, #00979D 0%, #00878F 100%)' },
+  { name: '.NET', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/dot-net-colored.svg', color: 'linear-gradient(135deg, #512BD4 0%, #7014E8 100%)' },
+  { name: 'Django', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/django-colored-dark.svg', color: 'linear-gradient(135deg, #092E20 0%, #0C4B33 100%)' },
+  { name: 'Laravel', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/laravel-colored.svg', color: 'linear-gradient(135deg, #FF2D20 0%, #FF5540 100%)' },
+  { name: 'Flutter', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/flutter-colored.svg', color: 'linear-gradient(135deg, #02569B 0%, #4FC3F7 100%)' },
+  { name: 'Docker', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg', color: 'linear-gradient(135deg, #0db7ed 0%, #2496ed 100%)' },
+
+  // AI & ML
+  { name: 'TensorFlow', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tensorflow-colored.svg', color: 'linear-gradient(135deg, #FF6F00 0%, #FFA726 100%)' },
+  { name: 'PyTorch', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/pytorch-colored.svg', color: 'linear-gradient(135deg, #EE4C2C 0%, #FF6F3C 100%)' },
+  { name: 'Kubernetes', icon: 'https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/kubernetes-colored.svg', color: 'linear-gradient(135deg, #326CE5 0%, #2854C5 100%)' },
 ];
