@@ -45,6 +45,7 @@ const config: Config = {
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        handwriting: ['Allura', 'cursive'],
       },
       maxWidth: {
         'container': '1280px',

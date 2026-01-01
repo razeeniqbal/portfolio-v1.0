@@ -26,7 +26,7 @@ export default function MobileMenu() {
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-primary-50 dark:bg-primary-950 border-b border-primary-200 dark:border-primary-800">
         <div className="flex items-center justify-between px-4 h-16">
-          <Link href="/" className="text-xl font-bold text-gradient">
+          <Link href="/" className="text-3xl font-handwriting text-gray-900 dark:text-white transition-colors duration-300">
             Razeen Iqbal
           </Link>
 
@@ -90,7 +90,7 @@ export default function MobileMenu() {
                 </div>
 
                 <div className="text-center">
-                  <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                  <h2 className="text-3xl font-handwriting text-gray-900 dark:text-white mb-1 transition-colors duration-300">
                     Razeen Iqbal
                   </h2>
                   <p className="text-sm text-gray-600 dark:text-gray-400">Data Engineer & AI Specialist</p>

@@ -35,7 +35,7 @@ export default function ModernSidebar() {
         </div>
 
         <div className="text-center">
-          <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-0.5">
+          <h2 className="text-2xl font-handwriting text-gray-900 dark:text-white mb-0.5 transition-colors duration-300">
             Razeen Iqbal
           </h2>
           <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Data Engineer & AI Specialist</p>
@@ -112,7 +112,7 @@ export default function ModernSidebar() {
 
         {/* Copyright */}
         <p className="text-[10px] text-center text-gray-600 dark:text-gray-500 leading-tight">
-          © 2025 Razeen Iqbal<br />All rights reserved.
+          © 2025 <span className="font-handwriting">Razeen Iqbal</span><br />All rights reserved.
         </p>
       </div>
     </aside>

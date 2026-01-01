@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -104,6 +105,13 @@
   .text-gradient {
     @apply bg-clip-text text-transparent;
     @apply bg-gradient-to-r from-accent-blue via-accent-purple to-accent-teal;
+  }
+
+  /* Handwritten name style */
+  .handwritten-name {
+    font-family: 'Allura', cursive;
+    @apply text-gray-900 dark:text-white;
+    @apply transition-colors duration-300;
   }
 
   /* Hover lift effect */
