@@ -303,4 +303,136 @@ export const achievements: Achievement[] = [
     image: '/achievements/bem-graduate.jpg',
     credentialId: 'G1207508A'
   },
+
+  // Additional IBM Certifications
+  {
+    id: '29',
+    title: 'AI Foundations',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Core foundations of artificial intelligence including machine learning, deep learning, and neural networks.',
+    category: 'certification',
+    image: '/achievements/ibm-ai-foundations.jpg'
+  },
+  {
+    id: '30',
+    title: 'Agile Explorer',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Introduction to Agile methodologies, Scrum framework, and iterative development practices.',
+    category: 'certification',
+    image: '/achievements/ibm-agile.jpg'
+  },
+  {
+    id: '31',
+    title: 'Data Fundamentals',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Fundamental concepts of data management, data structures, and data analysis principles.',
+    category: 'certification',
+    image: '/achievements/ibm-data-fundamentals.jpg'
+  },
+  {
+    id: '32',
+    title: 'Data Science Foundations - Level 1',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'First level of data science foundations covering essential concepts and methodologies.',
+    category: 'certification',
+    image: '/achievements/ibm-ds-level1.jpg'
+  },
+  {
+    id: '33',
+    title: 'Data Science Foundations - Level 2 (V2)',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Advanced data science foundations building on Level 1 concepts with practical applications.',
+    category: 'certification',
+    image: '/achievements/ibm-ds-level2.jpg'
+  },
+  {
+    id: '34',
+    title: 'Data Science Methodologies',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Comprehensive training on data science methodologies and best practices.',
+    category: 'certification',
+    image: '/achievements/ibm-ds-methodologies.jpg'
+  },
+  {
+    id: '35',
+    title: 'Data Science Tools',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Proficiency in essential data science tools and platforms.',
+    category: 'certification',
+    image: '/achievements/ibm-ds-tools.jpg'
+  },
+  {
+    id: '36',
+    title: 'Data Analysis Using Python',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Advanced data analysis techniques using Python and popular data science libraries.',
+    category: 'certification',
+    image: '/achievements/ibm-data-analysis-python.jpg'
+  },
+  {
+    id: '37',
+    title: 'Data Visualization Using Python',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Creating compelling data visualizations using Python visualization libraries.',
+    category: 'certification',
+    image: '/achievements/ibm-data-viz-python.jpg'
+  },
+  {
+    id: '38',
+    title: 'Python for Data Science',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Comprehensive Python programming for data science applications.',
+    category: 'certification',
+    image: '/achievements/ibm-python-ds.jpg'
+  },
+  {
+    id: '39',
+    title: 'Hadoop Foundations - Level 1',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Foundational knowledge of Hadoop ecosystem and distributed data processing.',
+    category: 'certification',
+    image: '/achievements/ibm-hadoop-level1.jpg'
+  },
+  {
+    id: '40',
+    title: 'Spark - Level 1',
+    organization: 'IBM',
+    issuedDate: 'April 2025',
+    description: 'Introduction to Apache Spark for big data processing and analytics.',
+    category: 'certification',
+    image: '/achievements/ibm-spark-level1.jpg'
+  },
+
+  // Additional Mereka Certifications
+  {
+    id: '41',
+    title: 'Explore AI Basics',
+    organization: 'Mereka',
+    issuedDate: 'March 2025',
+    description: 'Basic concepts of artificial intelligence and its real-world applications.',
+    category: 'course',
+    image: '/achievements/mereka-ai-basics.jpg',
+    credentialId: 'e484d41b'
+  },
+  {
+    id: '42',
+    title: 'Explore Internet Search and Beyond',
+    organization: 'Mereka',
+    issuedDate: 'March 2025',
+    description: 'Advanced internet search techniques and information retrieval strategies.',
+    category: 'course',
+    image: '/achievements/mereka-search.jpg',
+    credentialId: 'f9f3a231'
+  },
 ];

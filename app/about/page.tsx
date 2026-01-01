@@ -1,11 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import RetroCard from '@/components/ui/RetroCard';
 import { personalInfo, educationCards, careers } from '@/lib/data';
-import { Award, Languages, GraduationCap, User } from 'lucide-react';
+import { GraduationCap, User } from 'lucide-react';
 import { EducationSection, CareerSection, GlowCard } from '@/components/ui';
-import { AnimatedListDemo } from '@/components/ui/AnimatedListDemo';
 
 export default function AboutPage() {
   return (
@@ -38,15 +35,28 @@ export default function AboutPage() {
               {personalInfo.bio}
             </p>
             <p className="text-sm">
-              My journey started in civil engineering, but I discovered my passion for data and AI.
-              I made the transition from engineering to data science, and I haven't looked back since.
-              Now, I specialize in building end-to-end data pipelines, developing ML models, and
-              creating intelligent data solutions that drive real business value.
+              My journey started in civil engineering, but I discovered my passion for data and AI during 
+              my time at G&P Geotechnic, where I automated engineering workflows and built data solutions. 
+              That spark led me to become a Certified Data Analyst and pursue a Master's in Artificial Intelligence,
+              and I haven't looked back since.
             </p>
             <p className="text-sm">
-              Currently pursuing a Master's degree in AI at {personalInfo.university} with a CGPA of {personalInfo.cgpa},
-              while working full-time as a Data Engineer. I love the challenge of solving complex
-              data problems and staying on the cutting edge of AI technology.
+              Now as a Data Engineer at AEM Energy Solutions, I work on building data pipelines, moving data 
+              between different systems, and creating smart analytics tools for the energy sector. Before this, 
+              at EISmartwork, I built prediction models using massive datasets with over 10 million records and 
+              created interactive dashboards that helped companies make better decisions 20% faster.
+            </p>
+            <p className="text-sm">
+              I hold a Master's degree in AI from {personalInfo.university} with a CGPA of {personalInfo.cgpa}, 
+              and I've earned certifications from big tech companies like Microsoft, Google Cloud, and IBM. I was 
+              invited as a Google Speaker to talk about AI at AI Build 2025, and made it to the Top 20 
+              in AWS National 2025 for training large language models.
+            </p>
+            <p className="text-sm">
+              What drives me? Turning messy data into clear insights, building systems that learn and improve, 
+              and staying ahead in the fast-moving world of AI. Whether it's designing data workflows, training 
+              smart models, or creating visual dashboards, I'm passionate about solving tough problems that make 
+              a real difference.
             </p>
           </div>
         </GlowCard>

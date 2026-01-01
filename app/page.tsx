@@ -20,14 +20,6 @@ export default function Home() {
       gradientColor: '#3b82f6',
     },
     {
-      icon: Code2,
-      title: 'Skills & Tools',
-      description: 'Technologies and frameworks I work with',
-      href: '/about',
-      color: 'from-purple-500 to-pink-500',
-      gradientColor: '#a855f7',
-    },
-    {
       icon: Database,
       title: 'Dashboard',
       description: 'Real-time coding statistics and activity',
@@ -44,20 +36,28 @@ export default function Home() {
       gradientColor: '#4ade80',
     },
     {
-      icon: MessageSquare,
-      title: 'Chat Room',
-      description: 'Connect and chat in real-time',
-      href: '/chat',
-      color: 'from-indigo-500 to-blue-500',
-      gradientColor: '#6366f1',
-    },
-    {
       icon: Brain,
       title: 'About Me',
       description: 'Learn more about my journey and experience',
       href: '/about',
       color: 'from-pink-500 to-rose-500',
       gradientColor: '#ec4899',
+    },
+    {
+      icon: MessageSquare,
+      title: 'Contact',
+      description: 'Get in touch with me',
+      href: '/contact',
+      color: 'from-indigo-500 to-blue-500',
+      gradientColor: '#6366f1',
+    },
+    {
+      icon: Code2,
+      title: 'Talk to My AI Bot',
+      description: 'Chat with AI about my portfolio and expertise',
+      href: '/smart-talk',
+      color: 'from-purple-500 to-pink-500',
+      gradientColor: '#a855f7',
     },
   ];
 

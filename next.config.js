@@ -4,12 +4,19 @@ const nextConfig = {
   experimental: {},
   turbopack: {},
 
+  // Suppress hydration warnings from browser extensions
+  reactStrictMode: true,
+
   // Image optimization
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.simpleicons.org',
       },
     ],
   },

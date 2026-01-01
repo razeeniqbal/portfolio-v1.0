@@ -10,6 +10,7 @@ interface Education {
   field: string
   period: string
   location: string
+  cgpa?: string
   logo?: string
 }
 
@@ -19,6 +20,20 @@ interface EducationSectionProps {
 }
 
 export function EducationSection({ education, className }: EducationSectionProps) {
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/Razeen_Iqbal_Resume.pdf';
+    link.download = 'Razeen_Iqbal_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleDownloadPortfolio = () => {
+    // Open portfolio in new tab (this entire website)
+    window.open(window.location.origin, '_blank');
+  };
+
   return (
     <div className={className}>
       {/* Header */}
@@ -33,11 +48,17 @@ export function EducationSection({ education, className }: EducationSectionProps
           </div>
         </div>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <button
+            onClick={handleDownloadPortfolio}
+            className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          >
             <Download className="w-4 h-4" />
             <span className="text-sm">Download Portfolio</span>
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <button
+            onClick={handleDownloadResume}
+            className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          >
             <Download className="w-4 h-4" />
             <span className="text-sm">Download Resume</span>
           </button>
@@ -75,6 +96,12 @@ export function EducationSection({ education, className }: EducationSectionProps
                   <span>{edu.period}</span>
                   <span>•</span>
                   <span>{edu.location}</span>
+                  {edu.cgpa && (
+                    <>
+                      <span>•</span>
+                      <span className="font-medium text-gray-700 dark:text-gray-300">CGPA: {edu.cgpa}</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

@@ -1,13 +1,8 @@
 export { default as MagicCard } from './MagicCard';
 export { default as SkillIcon } from './SkillIcon';
 export { ThemeToggle } from './ThemeToggle';
-export { default as RetroCard } from './RetroCard';
-export { default as RetroButton } from './RetroButton';
-export { FeatureSteps } from './FeatureSteps';
 export { EducationSection } from './EducationSection';
 export { CareerSection } from './CareerSection';
-export { AnimatedList } from './AnimatedList';
-export { AnimatedListDemo } from './AnimatedListDemo';
 export { GlowCard } from './spotlight-card';
 export { AchievementCard } from './AchievementCard';
 export { ProjectCard } from './ProjectCard';

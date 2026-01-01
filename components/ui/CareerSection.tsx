@@ -9,7 +9,7 @@ interface Career {
   role: string
   period: string
   location: string
-  type: 'Internship' | 'Onsite' | 'Remote' | 'Part-time' | 'Full-time'
+  type: 'Internship' | 'Onsite' | 'Remote' | 'Part-time' | 'Full-time' | 'Hybrid'
   logo?: string
   responsibilities: string[]
 }
@@ -34,6 +34,8 @@ export function CareerSection({ careers, className }: CareerSectionProps) {
         return 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
       case 'Remote':
         return 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+      case 'Hybrid':
+        return 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300'
       case 'Part-time':
         return 'bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300'
       case 'Full-time':
