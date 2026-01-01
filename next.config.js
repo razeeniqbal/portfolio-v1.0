@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Optimize for lower memory usage
-  experimental: {},
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion'],
+  },
   turbopack: {},
 
   // Suppress hydration warnings from browser extensions
@@ -19,10 +21,19 @@ const nextConfig = {
         hostname: 'cdn.simpleicons.org',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
 
+  // Compress output
+  compress: true,
+
+  // Production optimizations
+  poweredByHeader: false,
+
   // Webpack configuration for memory optimization
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
     // Reduce memory usage during development
     if (!isServer) {
       config.optimization = {
@@ -37,10 +48,18 @@ const nextConfig = {
               chunks: 'all',
               minChunks: 2,
             },
+            framerMotion: {
+              name: 'framer-motion',
+              test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
+              priority: 10,
+              reuseExistingChunk: true,
+            },
           },
         },
+        runtimeChunk: !dev ? 'single' : false,
       };
     }
+
     return config;
   },
 };

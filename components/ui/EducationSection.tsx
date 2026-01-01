@@ -37,8 +37,8 @@ export function EducationSection({ education, className }: EducationSectionProps
   return (
     <div className={className}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-3">
+      <div className="mb-6">
+        <div className="flex items-center gap-3 mb-4">
           <div className="bg-gray-900 dark:bg-gray-100 p-2 rounded">
             <GraduationCap className="w-6 h-6 text-white dark:text-gray-900" />
           </div>
@@ -47,17 +47,19 @@ export function EducationSection({ education, className }: EducationSectionProps
             <p className="text-sm text-gray-600 dark:text-gray-400">My educational journey.</p>
           </div>
         </div>
-        <div className="flex gap-3">
+
+        {/* Download Buttons */}
+        <div className="flex gap-2">
           <button
             onClick={handleDownloadPortfolio}
-            className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             <Download className="w-4 h-4" />
             <span className="text-sm">Download Portfolio</span>
           </button>
           <button
             onClick={handleDownloadResume}
-            className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
           >
             <Download className="w-4 h-4" />
             <span className="text-sm">Download Resume</span>
@@ -92,15 +94,20 @@ export function EducationSection({ education, className }: EducationSectionProps
                 <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">
                   {edu.degree} • {edu.field}
                 </div>
-                <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-500">
-                  <span>{edu.period}</span>
-                  <span>•</span>
-                  <span>{edu.location}</span>
+                <div className="flex flex-col gap-1 text-sm text-gray-500 dark:text-gray-500">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600"></span>
+                    {edu.period}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600"></span>
+                    {edu.location}
+                  </span>
                   {edu.cgpa && (
-                    <>
-                      <span>•</span>
-                      <span className="font-medium text-gray-700 dark:text-gray-300">CGPA: {edu.cgpa}</span>
-                    </>
+                    <span className="flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600"></span>
+                      CGPA: {edu.cgpa}
+                    </span>
                   )}
                 </div>
               </div>

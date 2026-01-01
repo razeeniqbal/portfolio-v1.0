@@ -78,9 +78,13 @@ export default function MobileMenu() {
               {/* Profile Section */}
               <div className="mb-8">
                 <div className="relative mb-4">
-                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto shadow-lg">
-                    <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden">
-                      <span className="text-3xl font-semibold text-white">RI</span>
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto shadow-lg p-1">
+                    <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
+                      <img
+                        src="/profile.jpg"
+                        alt="Razeen Iqbal"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>

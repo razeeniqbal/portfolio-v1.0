@@ -14,39 +14,74 @@ export default function MagicCard({
   gradientColor = '#4ade80',
 }: MagicCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | undefined>(undefined);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile devices
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || isMobile) return;
 
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    // Use requestAnimationFrame for smoother performance
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
 
-    setMousePosition({ x, y });
+    rafRef.current = requestAnimationFrame(() => {
+      if (!cardRef.current) return;
 
-    // Calculate 3D tilt effect
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateXValue = ((y - centerY) / centerY) * -10;
-    const rotateYValue = ((x - centerX) / centerX) * 10;
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    setRotateX(rotateXValue);
-    setRotateY(rotateYValue);
+      setMousePosition({ x, y });
+
+      // Calculate 3D tilt effect with reduced intensity
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateXValue = ((y - centerY) / centerY) * -5; // Reduced from -10
+      const rotateYValue = ((x - centerX) / centerX) * 5;  // Reduced from 10
+
+      setRotateX(rotateXValue);
+      setRotateY(rotateYValue);
+    });
   };
 
   const handleMouseEnter = () => {
-    setIsHovering(true);
+    if (!isMobile) {
+      setIsHovering(true);
+    }
   };
 
   const handleMouseLeave = () => {
     setIsHovering(false);
     setRotateX(0);
     setRotateY(0);
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
   };
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div
@@ -56,13 +91,14 @@ export default function MagicCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
-        transform: isHovering
+        transform: isHovering && !isMobile
           ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`
           : 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)',
+        willChange: isHovering && !isMobile ? 'transform' : 'auto',
       }}
     >
-      {/* Spotlight gradient following cursor */}
-      {isHovering && (
+      {/* Spotlight gradient following cursor - Desktop only */}
+      {isHovering && !isMobile && (
         <div
           className="pointer-events-none absolute inset-0 opacity-50 transition-opacity duration-300"
           style={{
@@ -71,8 +107,8 @@ export default function MagicCard({
         />
       )}
 
-      {/* Border glow effect */}
-      {isHovering && (
+      {/* Border glow effect - Desktop only */}
+      {isHovering && !isMobile && (
         <div
           className="pointer-events-none absolute inset-0"
           style={{

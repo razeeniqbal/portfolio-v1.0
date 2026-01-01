@@ -68,7 +68,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Greeting */}
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">

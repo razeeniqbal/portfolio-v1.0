@@ -93,10 +93,15 @@ export function CareerSection({ careers, className }: CareerSectionProps) {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-500 mb-3">
-                  <span>{career.period}</span>
-                  <span>•</span>
-                  <span>{career.location}</span>
+                <div className="flex flex-col gap-1 text-sm text-gray-500 dark:text-gray-500 mb-3">
+                  <span className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600"></span>
+                    {career.period}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-gray-400 dark:bg-gray-600"></span>
+                    {career.location}
+                  </span>
                 </div>
 
                 {/* Responsibilities Toggle */}
