@@ -28,7 +28,9 @@
       "Bash(npm run build:webpack:*)",
       "Bash(python3:*)",
       "Bash(rmdir:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(npx eslint:*)",
+      "Bash(if not exist .vscode mkdir .vscode)"
     ]
   }
 }

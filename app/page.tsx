@@ -89,10 +89,11 @@ export default function Home() {
 
           {/* Bio/Description */}
           <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-            {personalInfo.role} passionate about building intelligent data solutions and transforming raw data into actionable insights.
-            Currently pursuing Master's in Artificial Intelligence with deep expertise in ETL pipelines, machine learning model development,
-            statistical analysis, and cloud-based data infrastructure. Experienced in designing scalable data architectures,
-            implementing automated workflows, and deploying AI-driven analytics solutions across AWS, Azure, and GCP platforms.
+            {personalInfo.role} passionate about building smart data solutions and turning messy information into clear, 
+            useful insights. With a Master's degree in Artificial Intelligence, I specialize in creating data workflows, 
+            building prediction models, and setting up cloud systems that help businesses make better decisions. 
+            I design scalable systems, automate repetitive tasks, and deploy AI solutions across major cloud platforms 
+            like AWS, Azure, and Google Cloud.
           </p>
         </motion.div>
       </section>
