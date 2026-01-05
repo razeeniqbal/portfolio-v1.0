@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Home, User, Award, Briefcase, LayoutDashboard, MessageSquare, Mail, Sparkles } from 'lucide-react';
 import { Github, Linkedin } from 'lucide-react';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 const navItems = [
   { name: 'Home', href: '/', icon: Home },
@@ -19,31 +19,30 @@ export default function ModernSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-72 text-gray-900 dark:text-gray-100 p-4 flex flex-col border-r border-primary-200/50 dark:border-primary-800/50">
+    <aside className="w-72 text-gray-100 p-4 flex flex-col border-r border-primary-800/50">
       {/* Profile Section */}
       <div className="mb-4">
         <div className="relative mb-3">
           <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto shadow-lg p-1">
             <div className="w-full h-full rounded-full flex items-center justify-center overflow-hidden bg-white">
-              <img
+              <Image
                 src="/profile.jpg"
                 alt="Razeen Iqbal"
+                width={80}
+                height={80}
                 className="w-full h-full object-cover rounded-full"
+                priority
+                quality={85}
               />
             </div>
           </div>
         </div>
 
         <div className="text-center">
-          <h2 className="text-2xl font-handwriting text-gray-900 dark:text-white mb-0.5 transition-colors duration-300">
+          <h2 className="text-2xl font-handwriting text-white mb-0.5">
             Razeen Iqbal
           </h2>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">Data Engineer & AI Specialist</p>
-
-          {/* Theme Toggle */}
-          <div className="flex justify-center">
-            <ThemeToggle />
-          </div>
+          <p className="text-xs text-gray-400 mb-2">Data Engineer & AI Specialist</p>
         </div>
       </div>
 

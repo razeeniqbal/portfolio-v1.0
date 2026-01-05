@@ -22,19 +22,26 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <body className={inter.className}>
         <MobileMenu />
 
         {/* Desktop: Connected Floating Window */}
         <div className="hidden lg:flex min-h-screen items-center justify-center p-8">
-          <div className="flex bg-primary-50/80 dark:bg-primary-950/80 backdrop-blur-xl rounded-2xl shadow-2xl max-w-7xl w-full max-h-[90vh]">
+          <div className="flex bg-primary-50 dark:bg-primary-950 rounded-2xl shadow-2xl max-w-7xl w-full max-h-[90vh]">
             {/* Sidebar */}
             <ModernSidebar />
 

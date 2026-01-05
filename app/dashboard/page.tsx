@@ -46,26 +46,20 @@ export default function DashboardPage() {
     fetchGitHubData();
   }, []);
 
-  // Use GitHub stats or fallback to mock data
+  // Use GitHub stats only when loaded (no fallback)
   const stats = {
     github: {
-      contributions: githubStats?.contributions || 1247,
-      repos: githubStats?.repos || 42,
-      followers: githubStats?.followers || 156,
-      following: githubStats?.following || 89,
+      contributions: githubStats?.contributions || 0,
+      repos: githubStats?.repos || 0,
+      followers: githubStats?.followers || 0,
+      following: githubStats?.following || 0,
     },
   };
 
   // Calculate language breakdown from GitHub stats
   const calculateLanguageBreakdown = () => {
     if (!githubStats?.topLanguages) {
-      return [
-        { lang: 'Python', percent: 45, color: 'bg-orange-500' },
-        { lang: 'SQL', percent: 25, color: 'bg-blue-500' },
-        { lang: 'JavaScript', percent: 15, color: 'bg-yellow-500' },
-        { lang: 'TypeScript', percent: 10, color: 'bg-green-500' },
-        { lang: 'Other', percent: 5, color: 'bg-gray-500' },
-      ];
+      return [];
     }
 
     const languages = githubStats.topLanguages;
@@ -80,13 +74,17 @@ export default function DashboardPage() {
       'Java': 'bg-red-500',
       'C++': 'bg-pink-500',
       'Jupyter Notebook': 'bg-orange-400',
+      'Shell': 'bg-gray-500',
     };
 
-    return Object.entries(languages).map(([lang, count]) => ({
-      lang,
-      percent: Math.round((count / total) * 100),
-      color: colorMap[lang] || 'bg-gray-500',
-    }));
+    return Object.entries(languages)
+      .map(([lang, count]) => ({
+        lang,
+        percent: Math.round((count / total) * 100),
+        color: colorMap[lang] || 'bg-gray-500',
+      }))
+      .sort((a, b) => b.percent - a.percent)
+      .slice(0, 4); // Top 4 languages
   };
 
   const languageBreakdown = calculateLanguageBreakdown();
@@ -136,9 +134,15 @@ export default function DashboardPage() {
                 >
                   <div className="text-center">
                     <stat.icon className="w-8 h-8 mx-auto mb-3 text-gray-700 dark:text-gray-300" />
-                    <p className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                      {stat.value}
-                    </p>
+                    {loading ? (
+                      <div className="h-10 mb-1 flex items-center justify-center">
+                        <div className="animate-pulse h-8 w-16 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                      </div>
+                    ) : (
+                      <p className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
+                        {stat.value}
+                      </p>
+                    )}
                     <p className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
                   </div>
                 </GlowCard>
@@ -150,56 +154,100 @@ export default function DashboardPage() {
           <GlowCard
             customSize
             glowColor="green"
-            className="w-full h-auto bg-white dark:bg-gray-900/80"
+            className="w-full h-auto bg-white dark:bg-gray-900/80 mb-6"
           >
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
               Contribution Activity {githubStats?.contributionCalendar && `(${githubStats.contributionCalendar.totalContributions} total)`}
             </h3>
-            <div className="grid grid-cols-12 gap-1">
-              {(() => {
-                // Use real contribution data if available, otherwise show mock data
-                if (githubStats?.contributionCalendar) {
-                  const allDays = githubStats.contributionCalendar.weeks
-                    .flatMap(week => week.contributionDays)
-                    .slice(-84); // Last ~12 weeks (84 days)
+            {loading ? (
+              <div className="animate-pulse space-y-2">
+                <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
+                <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
+                <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-full"></div>
+              </div>
+            ) : (
+              <div className="w-full">
+                <div className="grid gap-[2px] w-full" style={{ gridTemplateColumns: 'repeat(52, 1fr)' }}>
+                  {(() => {
+                    // Use real contribution data if available
+                    if (githubStats?.contributionCalendar) {
+                      const weeks = githubStats.contributionCalendar.weeks.slice(-52); // Last 52 weeks
 
-                  return allDays.map((day, i) => {
-                    const count = day.contributionCount;
-                    let opacity = 'opacity-0';
-                    if (count === 0) opacity = 'opacity-0';
-                    else if (count <= 2) opacity = 'opacity-25';
-                    else if (count <= 5) opacity = 'opacity-50';
-                    else if (count <= 10) opacity = 'opacity-75';
-                    else opacity = 'opacity-100';
+                      return weeks.map((week, weekIndex) => {
+                        // Pad weeks to always have 7 days for proper alignment
+                        const days = [...week.contributionDays];
+                        const startDay = new Date(days[0]?.date).getDay(); // 0 = Sunday
 
-                    return (
-                      <div
-                        key={i}
-                        className={`h-3 w-3 bg-green-500 ${opacity} rounded-sm hover:ring-2 hover:ring-green-400 transition-all cursor-pointer`}
-                        title={`${count} contributions on ${day.date}`}
-                      />
-                    );
-                  });
-                } else {
-                  // Fallback to mock data
-                  return Array.from({ length: 84 }).map((_, i) => {
-                    const intensity = Math.floor(Math.random() * 5);
-                    const opacities = ['opacity-0', 'opacity-25', 'opacity-50', 'opacity-75', 'opacity-100'];
-                    return (
-                      <div
-                        key={i}
-                        className={`h-3 w-3 bg-green-500 ${opacities[intensity]} rounded-sm`}
-                        title={`${intensity} contributions`}
-                      />
-                    );
-                  });
-                }
-              })()}
-            </div>
+                        // Add empty cells at the beginning if week doesn't start on Sunday
+                        const paddedDays = Array(7).fill(null);
+                        days.forEach((day, i) => {
+                          const dayOfWeek = new Date(day.date).getDay();
+                          paddedDays[dayOfWeek] = day;
+                        });
+
+                        return (
+                          <div key={weekIndex} className="flex flex-col gap-[2px]">
+                            {paddedDays.map((day, dayIndex) => {
+                              if (!day) {
+                                return (
+                                  <div
+                                    key={dayIndex}
+                                    className="aspect-square opacity-0"
+                                  />
+                                );
+                              }
+
+                              const count = day.contributionCount;
+                              let bgColor = 'bg-gray-200 dark:bg-gray-800';
+                              if (count === 0) bgColor = 'bg-gray-200 dark:bg-gray-800';
+                              else if (count <= 2) bgColor = 'bg-green-300 dark:bg-green-900';
+                              else if (count <= 5) bgColor = 'bg-green-400 dark:bg-green-700';
+                              else if (count <= 10) bgColor = 'bg-green-500 dark:bg-green-600';
+                              else bgColor = 'bg-green-600 dark:bg-green-500';
+
+                              return (
+                                <div
+                                  key={dayIndex}
+                                  className={`aspect-square ${bgColor} rounded-[2px] hover:ring-2 hover:ring-green-400 transition-all cursor-pointer border border-gray-300 dark:border-gray-700`}
+                                  title={`${count} contributions on ${day.date}`}
+                                />
+                              );
+                            })}
+                          </div>
+                        );
+                      });
+                    } else {
+                      // Fallback: show 52 weeks of mock data
+                      return Array.from({ length: 52 }).map((_, weekIndex) => (
+                        <div key={weekIndex} className="flex flex-col gap-[2px]">
+                          {Array.from({ length: 7 }).map((_, dayIndex) => {
+                            const intensity = Math.floor(Math.random() * 5);
+                            const colors = [
+                              'bg-gray-200 dark:bg-gray-800',
+                              'bg-green-300 dark:bg-green-900',
+                              'bg-green-400 dark:bg-green-700',
+                              'bg-green-500 dark:bg-green-600',
+                              'bg-green-600 dark:bg-green-500'
+                            ];
+                            return (
+                              <div
+                                key={dayIndex}
+                                className={`aspect-square ${colors[intensity]} rounded-[2px] border border-gray-300 dark:border-gray-700`}
+                                title={`${intensity} contributions`}
+                              />
+                            );
+                          })}
+                        </div>
+                      ));
+                    }
+                  })()}
+                </div>
+              </div>
+            )}
             <p className="text-xs text-gray-500 dark:text-gray-400 mt-4">
               {githubStats?.contributionCalendar
                 ? '🟩 Real contribution data from GitHub'
-                : '🟩 More contributions • ⬜ Fewer contributions (Mock data)'}
+                : '🟩 More contributions • ⬜ Fewer contributions'}
             </p>
           </GlowCard>
 
@@ -212,28 +260,46 @@ export default function DashboardPage() {
             <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
               Language Breakdown
             </h3>
-            <div className="space-y-4">
-              {languageBreakdown.map((item, index) => (
-                <div key={item.lang}>
-                  <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                      {item.lang}
-                    </span>
-                    <span className="text-sm font-bold text-gray-900 dark:text-white">
-                      {item.percent}%
-                    </span>
+            {loading ? (
+              <div className="space-y-4">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div key={i} className="animate-pulse">
+                    <div className="flex justify-between mb-2">
+                      <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-20"></div>
+                      <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-12"></div>
+                    </div>
+                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full"></div>
                   </div>
-                  <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${item.percent}%` }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                      className={`h-full ${item.color} rounded-full`}
-                    />
+                ))}
+              </div>
+            ) : languageBreakdown.length > 0 ? (
+              <div className="space-y-4">
+                {languageBreakdown.map((item, index) => (
+                  <div key={item.lang}>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                        {item.lang}
+                      </span>
+                      <span className="text-sm font-bold text-gray-900 dark:text-white">
+                        {item.percent}%
+                      </span>
+                    </div>
+                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${item.percent}%` }}
+                        transition={{ duration: 1, delay: index * 0.1 }}
+                        className={`h-full ${item.color} rounded-full`}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                <p className="text-sm">No language data available</p>
+              </div>
+            )}
           </GlowCard>
         </div>
 

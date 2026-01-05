@@ -17,7 +17,7 @@ export const achievements: Achievement[] = [
     title: 'Microsoft Certified: Power BI Data Analyst Associate',
     organization: 'Microsoft',
     issuedDate: 'September 2023',
-    description: 'Demonstrated expertise in data visualization and business intelligence using Power BI. Skilled in preparing data, modeling data, visualizing and analyzing data, and deploying and maintaining assets.',
+    description: 'Expert in Power BI data visualization, modeling, and business intelligence solutions.',
     category: 'certification',
     image: '/achievements/microsoft-powerbi.jpg',
     credentialUrl: 'https://learn.microsoft.com/en-us/users/razeeniqbal/credentials/DE6CEB296EC4D874',
@@ -28,7 +28,7 @@ export const achievements: Achievement[] = [
     title: 'Microsoft Certified: Azure AI Fundamentals',
     organization: 'Microsoft',
     issuedDate: 'December 2024',
-    description: 'Validated foundational knowledge of machine learning and artificial intelligence concepts and related Microsoft Azure services.',
+    description: 'Foundational knowledge in ML, AI concepts, and Azure AI services.',
     category: 'certification',
     image: '/achievements/microsoft-ai.jpg',
     credentialUrl: 'https://learn.microsoft.com/en-us/certifications/'
@@ -38,7 +38,7 @@ export const achievements: Achievement[] = [
     title: 'Microsoft Certified: Azure Fundamentals',
     organization: 'Microsoft',
     issuedDate: 'October 2024',
-    description: 'Demonstrated foundational knowledge of cloud concepts, core Azure services, security, privacy, compliance, and Azure pricing and support.',
+    description: 'Cloud fundamentals including Azure services, security, compliance, and pricing.',
     category: 'certification',
     image: '/achievements/microsoft-azure.jpg',
     credentialUrl: 'https://learn.microsoft.com/en-us/certifications/'
@@ -48,7 +48,7 @@ export const achievements: Achievement[] = [
     title: 'Microsoft Certified: Security, Compliance, and Identity Fundamentals',
     organization: 'Microsoft',
     issuedDate: 'December 2024',
-    description: 'Validated understanding of security, compliance, and identity concepts across cloud-based and related Microsoft services.',
+    description: 'Security, compliance, and identity fundamentals for Microsoft cloud services.',
     category: 'certification',
     image: '/achievements/microsoft-security.jpg',
     credentialUrl: 'https://learn.microsoft.com/en-us/certifications/',
@@ -61,7 +61,7 @@ export const achievements: Achievement[] = [
     title: 'PCEP – Certified Entry-Level Python Programmer',
     organization: 'Python Institute',
     issuedDate: 'September 2023',
-    description: 'Certified proficiency in Python programming fundamentals, including syntax, semantics, runtime environment, and basic programming techniques.',
+    description: 'Certified in Python fundamentals, syntax, and programming techniques.',
     category: 'certification',
     image: '/achievements/python-pcep.jpg',
     credentialUrl: 'https://www.pythoninstitute.org/'
@@ -73,7 +73,7 @@ export const achievements: Achievement[] = [
     title: 'Create ML Models with BigQuery ML Skill Badge',
     organization: 'Google Cloud',
     issuedDate: 'April 2025',
-    description: 'Demonstrated ability to create and evaluate machine learning models using BigQuery ML, including linear regression, binary classification, and multi-class classification models.',
+    description: 'Create ML models with BigQuery including regression and classification.',
     category: 'certification',
     image: '/achievements/google-bigquery.jpg',
     credentialUrl: 'https://www.cloudskillsboost.google/'
@@ -83,7 +83,7 @@ export const achievements: Achievement[] = [
     title: 'Prompt Design in Vertex AI Skill Badge',
     organization: 'Google Cloud',
     issuedDate: 'March 2025',
-    description: 'Earned skill badge by completing the Prompt Design in Vertex AI course, demonstrating proficiency in designing effective prompts for large language models.',
+    description: 'Proficient in designing effective prompts for large language models.',
     category: 'certification',
     image: '/achievements/google-vertex.jpg',
     credentialUrl: 'https://www.cloudskillsboost.google/'
@@ -95,7 +95,7 @@ export const achievements: Achievement[] = [
     title: 'Data Analysis with Python',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Completed comprehensive training in data analysis using Python, including data manipulation, visualization, and statistical analysis.',
+    description: 'Data analysis with Python including manipulation, visualization, and statistics.',
     category: 'certification',
     image: '/achievements/ibm-data-python.jpg',
     credentialId: 'f69be515945f41848da758a3534cdab8'
@@ -105,7 +105,7 @@ export const achievements: Achievement[] = [
     title: 'Data Science 101',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Introduction to data science fundamentals, covering key concepts, methodologies, and tools used in the field.',
+    description: 'Introduction to data science fundamentals, concepts, and methodologies.',
     category: 'certification',
     image: '/achievements/ibm-ds101.jpg',
     credentialId: '634f673197544ce38cb9aa2587fd0782'
@@ -115,7 +115,7 @@ export const achievements: Achievement[] = [
     title: 'Data Science Methodology',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Learned the major steps involved in practicing data science, including problem formulation, data collection, and model deployment.',
+    description: 'Data science methodology from problem formulation to model deployment.',
     category: 'certification',
     image: '/achievements/ibm-methodology.jpg',
     credentialId: 'e952973f82c443d98d0786eca34a0b00'
@@ -125,7 +125,7 @@ export const achievements: Achievement[] = [
     title: 'Data Visualization with Python',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Mastered data visualization techniques using Python libraries including Matplotlib, Seaborn, and Plotly.',
+    description: 'Data visualization with Matplotlib, Seaborn, and Plotly.',
     category: 'certification',
     image: '/achievements/ibm-visualization.jpg',
     credentialId: '9bc9df5cd4c1437abb293d2f716f13e4'
@@ -135,7 +135,7 @@ export const achievements: Achievement[] = [
     title: 'Python 101 for Data Science',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Foundational Python programming for data science, covering essential libraries and programming concepts.',
+    description: 'Python programming fundamentals for data science applications.',
     category: 'certification',
     image: '/achievements/ibm-python101.jpg',
     credentialId: '509f8539dbcd468ca020aa6b8f71cdda'
@@ -145,7 +145,7 @@ export const achievements: Achievement[] = [
     title: 'Data Science Tools',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Proficiency in essential data science tools including Jupyter, RStudio, and GitHub.',
+    description: 'Essential data science tools: Jupyter, RStudio, and GitHub.',
     category: 'certification',
     image: '/achievements/ibm-tools.jpg',
     credentialId: '582b153478374211a18a550be919f0bd'
@@ -157,7 +157,7 @@ export const achievements: Achievement[] = [
     title: 'Hadoop 101',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Introduction to Hadoop ecosystem, distributed computing, and big data processing fundamentals.',
+    description: 'Hadoop ecosystem and distributed computing fundamentals.',
     category: 'certification',
     image: '/achievements/ibm-hadoop.jpg',
     credentialId: 'af90efc4fdc44ccd98108ec86dcdba48'
@@ -167,7 +167,7 @@ export const achievements: Achievement[] = [
     title: 'Big Data 101',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Comprehensive overview of big data concepts, technologies, and applications in modern data engineering.',
+    description: 'Big data concepts, technologies, and applications.',
     category: 'certification',
     image: '/achievements/ibm-bigdata.jpg',
     credentialId: '8f38bc90d85f433dbe74495bb2b9e56f'
@@ -177,7 +177,7 @@ export const achievements: Achievement[] = [
     title: 'Spark Fundamentals I',
     organization: 'IBM SkillsBuild',
     issuedDate: 'April 2025',
-    description: 'Learned Apache Spark fundamentals for large-scale data processing and distributed computing.',
+    description: 'Apache Spark fundamentals for large-scale data processing.',
     category: 'certification',
     image: '/achievements/ibm-spark.jpg',
     credentialId: 'd96c42857dbf40ec9c9a6b69f50fa285'
@@ -189,7 +189,7 @@ export const achievements: Achievement[] = [
     title: 'Artificial Intelligence Fundamentals',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Comprehensive introduction to AI concepts, machine learning, neural networks, and practical applications.',
+    description: 'AI concepts, machine learning, and neural networks.',
     category: 'certification',
     image: '/achievements/ibm-ai-fundamentals.jpg'
   },
@@ -198,7 +198,7 @@ export const achievements: Achievement[] = [
     title: 'Understanding and Applying Text Embeddings',
     organization: 'DeepLearning.AI',
     issuedDate: 'April 2025',
-    description: 'Advanced course on text embeddings, semantic search, and natural language processing techniques.',
+    description: 'Text embeddings, semantic search, and NLP techniques.',
     category: 'certification',
     image: '/achievements/deeplearning-embeddings.jpg'
   },
@@ -207,7 +207,7 @@ export const achievements: Achievement[] = [
     title: 'Machine Learning Foundations: Linear Algebra',
     organization: 'LinkedIn Learning',
     issuedDate: 'October 2024',
-    description: 'Mathematical foundations for machine learning, focusing on linear algebra concepts and applications.',
+    description: 'Linear algebra foundations for machine learning.',
     category: 'course',
     image: '/achievements/linkedin-linear.jpg'
   },
@@ -216,7 +216,7 @@ export const achievements: Achievement[] = [
     title: 'Artificial Intelligence Foundations: Thinking Machines',
     organization: 'LinkedIn Learning',
     issuedDate: 'October 2024',
-    description: 'Explored the history, concepts, and future of artificial intelligence and machine learning.',
+    description: 'History, concepts, and future of AI and machine learning.',
     category: 'course',
     image: '/achievements/linkedin-ai.jpg'
   },
@@ -227,7 +227,7 @@ export const achievements: Achievement[] = [
     title: 'Boost Your Productivity with Microsoft Copilot',
     organization: 'Mereka',
     issuedDate: 'March 2025',
-    description: 'Learned to leverage Microsoft Copilot for enhanced productivity and AI-assisted workflows.',
+    description: 'Microsoft Copilot for enhanced productivity and AI workflows.',
     category: 'course',
     image: '/achievements/mereka-copilot.jpg',
     credentialId: 'fb6bb11d'
@@ -237,7 +237,7 @@ export const achievements: Achievement[] = [
     title: 'Explore Generative AI',
     organization: 'Mereka',
     issuedDate: 'March 2025',
-    description: 'Comprehensive exploration of generative AI technologies, applications, and best practices.',
+    description: 'Generative AI technologies, applications, and best practices.',
     category: 'course',
     image: '/achievements/mereka-genai.jpg',
     credentialId: '7f1306b8'
@@ -247,7 +247,7 @@ export const achievements: Achievement[] = [
     title: 'Explore Responsible AI',
     organization: 'Mereka',
     issuedDate: 'March 2025',
-    description: 'Training on ethical AI development, bias mitigation, and responsible AI practices.',
+    description: 'Ethical AI development, bias mitigation, and responsible practices.',
     category: 'course',
     image: '/achievements/mereka-responsible.jpg',
     credentialId: 'cd838cb5'
@@ -257,7 +257,7 @@ export const achievements: Achievement[] = [
     title: 'Get Started with Microsoft Copilot',
     organization: 'Mereka',
     issuedDate: 'March 2025',
-    description: 'Introduction to Microsoft Copilot features and practical applications in daily workflows.',
+    description: 'Microsoft Copilot features and practical applications.',
     category: 'course',
     image: '/achievements/mereka-getstarted.jpg',
     credentialId: '75b5641c'
@@ -267,7 +267,7 @@ export const achievements: Achievement[] = [
     title: 'Explore AI for All',
     organization: 'Mereka',
     issuedDate: 'March 2025',
-    description: 'Accessible introduction to AI concepts and applications for diverse audiences.',
+    description: 'AI concepts and applications for diverse audiences.',
     category: 'course',
     image: '/achievements/mereka-aiforall.jpg',
     credentialId: 'd6179ae4'
@@ -279,7 +279,7 @@ export const achievements: Achievement[] = [
     title: 'Certified Data Analyst Associate',
     organization: 'Asia Pacific University (APU/APIIT)',
     issuedDate: 'August 2023',
-    description: 'Professional certification in data analysis, covering statistical methods, data visualization, and analytical techniques.',
+    description: 'Statistical methods, data visualization, and analytical techniques.',
     category: 'certification',
     image: '/achievements/apu-analyst.jpg'
   },
@@ -288,7 +288,7 @@ export const achievements: Achievement[] = [
     title: 'Graduate Engineer',
     organization: 'The Institution of Engineers Malaysia',
     issuedDate: 'October 2022',
-    description: 'Recognized as a Graduate Engineer by the Institution of Engineers Malaysia.',
+    description: 'Graduate Engineer recognition by IEM.',
     category: 'certification',
     image: '/achievements/iem-graduate.jpg',
     credentialId: '119043'
@@ -298,7 +298,7 @@ export const achievements: Achievement[] = [
     title: 'Graduate Engineer',
     organization: 'Board of Engineers Malaysia',
     issuedDate: 'March 2022',
-    description: 'Registered as a Graduate Engineer with the Board of Engineers Malaysia.',
+    description: 'Graduate Engineer registration with BEM.',
     category: 'certification',
     image: '/achievements/bem-graduate.jpg',
     credentialId: 'G1207508A'
@@ -310,7 +310,7 @@ export const achievements: Achievement[] = [
     title: 'AI Foundations',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Core foundations of artificial intelligence including machine learning, deep learning, and neural networks.',
+    description: 'AI, machine learning, deep learning, and neural networks.',
     category: 'certification',
     image: '/achievements/ibm-ai-foundations.jpg'
   },
@@ -319,7 +319,7 @@ export const achievements: Achievement[] = [
     title: 'Agile Explorer',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Introduction to Agile methodologies, Scrum framework, and iterative development practices.',
+    description: 'Agile methodologies, Scrum framework, and iterative development.',
     category: 'certification',
     image: '/achievements/ibm-agile.jpg'
   },
@@ -328,7 +328,7 @@ export const achievements: Achievement[] = [
     title: 'Data Fundamentals',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Fundamental concepts of data management, data structures, and data analysis principles.',
+    description: 'Data management, structures, and analysis principles.',
     category: 'certification',
     image: '/achievements/ibm-data-fundamentals.jpg'
   },
@@ -337,7 +337,7 @@ export const achievements: Achievement[] = [
     title: 'Data Science Foundations - Level 1',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'First level of data science foundations covering essential concepts and methodologies.',
+    description: 'Data science foundations: essential concepts and methodologies.',
     category: 'certification',
     image: '/achievements/ibm-ds-level1.jpg'
   },
@@ -346,7 +346,7 @@ export const achievements: Achievement[] = [
     title: 'Data Science Foundations - Level 2 (V2)',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Advanced data science foundations building on Level 1 concepts with practical applications.',
+    description: 'Advanced data science concepts with practical applications.',
     category: 'certification',
     image: '/achievements/ibm-ds-level2.jpg'
   },
@@ -355,7 +355,7 @@ export const achievements: Achievement[] = [
     title: 'Data Science Methodologies',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Comprehensive training on data science methodologies and best practices.',
+    description: 'Data science methodologies and best practices.',
     category: 'certification',
     image: '/achievements/ibm-ds-methodologies.jpg'
   },
@@ -364,7 +364,7 @@ export const achievements: Achievement[] = [
     title: 'Data Science Tools',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Proficiency in essential data science tools and platforms.',
+    description: 'Essential data science tools and platforms.',
     category: 'certification',
     image: '/achievements/ibm-ds-tools.jpg'
   },
@@ -373,7 +373,7 @@ export const achievements: Achievement[] = [
     title: 'Data Analysis Using Python',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Advanced data analysis techniques using Python and popular data science libraries.',
+    description: 'Advanced data analysis with Python and data science libraries.',
     category: 'certification',
     image: '/achievements/ibm-data-analysis-python.jpg'
   },
@@ -382,7 +382,7 @@ export const achievements: Achievement[] = [
     title: 'Data Visualization Using Python',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Creating compelling data visualizations using Python visualization libraries.',
+    description: 'Compelling data visualizations with Python libraries.',
     category: 'certification',
     image: '/achievements/ibm-data-viz-python.jpg'
   },
@@ -391,7 +391,7 @@ export const achievements: Achievement[] = [
     title: 'Python for Data Science',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Comprehensive Python programming for data science applications.',
+    description: 'Python programming for data science applications.',
     category: 'certification',
     image: '/achievements/ibm-python-ds.jpg'
   },
@@ -400,7 +400,7 @@ export const achievements: Achievement[] = [
     title: 'Hadoop Foundations - Level 1',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Foundational knowledge of Hadoop ecosystem and distributed data processing.',
+    description: 'Hadoop ecosystem and distributed data processing.',
     category: 'certification',
     image: '/achievements/ibm-hadoop-level1.jpg'
   },
@@ -409,7 +409,7 @@ export const achievements: Achievement[] = [
     title: 'Spark - Level 1',
     organization: 'IBM',
     issuedDate: 'April 2025',
-    description: 'Introduction to Apache Spark for big data processing and analytics.',
+    description: 'Apache Spark for big data processing and analytics.',
     category: 'certification',
     image: '/achievements/ibm-spark-level1.jpg'
   },
@@ -420,7 +420,7 @@ export const achievements: Achievement[] = [
     title: 'Explore AI Basics',
     organization: 'Mereka',
     issuedDate: 'March 2025',
-    description: 'Basic concepts of artificial intelligence and its real-world applications.',
+    description: 'AI basics and real-world applications.',
     category: 'course',
     image: '/achievements/mereka-ai-basics.jpg',
     credentialId: 'e484d41b'
@@ -430,7 +430,7 @@ export const achievements: Achievement[] = [
     title: 'Explore Internet Search and Beyond',
     organization: 'Mereka',
     issuedDate: 'March 2025',
-    description: 'Advanced internet search techniques and information retrieval strategies.',
+    description: 'Advanced internet search and information retrieval techniques.',
     category: 'course',
     image: '/achievements/mereka-search.jpg',
     credentialId: 'f9f3a231'

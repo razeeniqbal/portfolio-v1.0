@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, User, Award, Briefcase, LayoutDashboard, MessageSquare, Mail, Sparkles } from 'lucide-react';
 import { Github, Linkedin } from 'lucide-react';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 const navItems = [
   { name: 'Home', href: '/', icon: Home },
@@ -24,16 +24,13 @@ export default function MobileMenu() {
   return (
     <>
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-primary-50 dark:bg-primary-950 border-b border-primary-200 dark:border-primary-800">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-primary-950 border-b border-primary-800">
         <div className="flex items-center justify-between px-4 h-16">
-          <Link href="/" className="text-3xl font-handwriting text-gray-900 dark:text-white transition-colors duration-300">
+          <Link href="/" className="text-3xl font-handwriting text-white">
             Razeen Iqbal
           </Link>
 
           <div className="flex items-center gap-3">
-            {/* Theme Toggle */}
-            <ThemeToggle />
-
             {/* Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -80,10 +77,14 @@ export default function MobileMenu() {
                 <div className="relative mb-4">
                   <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto shadow-lg p-1">
                     <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-900">
-                      <img
+                      <Image
                         src="/profile.jpg"
                         alt="Razeen Iqbal"
+                        width={96}
+                        height={96}
                         className="w-full h-full object-cover"
+                        priority
+                        quality={85}
                       />
                     </div>
                   </div>
