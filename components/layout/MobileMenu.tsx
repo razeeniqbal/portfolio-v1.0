@@ -24,7 +24,7 @@ export default function MobileMenu() {
   return (
     <>
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-primary-950 border-b border-primary-800">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-[100] bg-primary-950/95 backdrop-blur-sm border-b border-primary-800 shadow-md">
         <div className="flex items-center justify-between px-4 h-16">
           <Link href="/" className="text-3xl font-handwriting text-white">
             Razeen Iqbal

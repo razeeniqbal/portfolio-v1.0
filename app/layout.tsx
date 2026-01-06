@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} lg:relative`}>
         <MobileMenu />
 
         {/* Desktop: Connected Floating Window */}
@@ -52,9 +52,11 @@ export default function RootLayout({
           </div>
         </div>
 
-        {/* Mobile: Original Layout */}
+        {/* Mobile: Scrollable Layout with Fixed Header */}
         <main className="lg:hidden min-h-screen pt-16">
-          {children}
+          <div className="min-h-[calc(100vh-4rem)]">
+            {children}
+          </div>
         </main>
       </body>
     </html>

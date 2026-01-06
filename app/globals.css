@@ -199,9 +199,13 @@ html {
     to { opacity: 1; }
   }
 
-  /* Force hardware acceleration for smooth scrolling */
-  body, #__next {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+  /* Remove transforms from body to allow fixed positioning */
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-y: auto;
   }
 }
