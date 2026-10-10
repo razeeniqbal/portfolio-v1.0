@@ -30,7 +30,7 @@ export function PageHeader({ href, label, title, lede, meta, aside, before, clas
   return (
     <div className={cn('page-grid gap-y-10', className)}>
       {before && <div className="col-span-full">{before}</div>}
-      <div data-reveal className={cn('col-span-full', aside && 'md:col-span-5 lg:col-span-8 lg:self-end')}>
+      <div className={cn('col-span-full', aside && 'md:col-span-5 lg:col-span-8 lg:self-end')}>
         <TechnicalLabel as="p" marker={section ? `Page / ${section.index}` : undefined}>
           {label ?? section?.label}
         </TechnicalLabel>

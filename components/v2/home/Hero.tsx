@@ -82,7 +82,9 @@ export function Hero() {
                   const url = credentialVerifyUrl(c);
                   const year = credentialYear(c);
                   const meta = `${c.organization}${year ? ` · ${year}` : ''}`;
-                  const label = `${credentialShortTitle(c)}, ${meta}${url ? ' (verify)' : ''}`;
+                  // The accessible name starts with the visible text (code, then issuer), then the full title.
+                  const code = credentialCode(c) ?? credentialShortTitle(c);
+                  const label = `${code} ${c.organization}: ${credentialShortTitle(c)}${year ? `, ${year}` : ''}${url ? ' (verify)' : ''}`;
                   return (
                     <li key={c.id} className="group relative">
                       <a

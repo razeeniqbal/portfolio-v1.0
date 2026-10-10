@@ -79,7 +79,7 @@ export function CareerTimeline({ data, variant = 'full', className }: CareerTime
             aria-label={`${s.title}, ${s.org}, ${s.period}`}
             style={{ left: x(s.start), width: w(s.start, s.end), ['--i' as string]: i }}
             className={cn(
-              'tl-grow absolute top-1/2 h-6 min-w-[1rem] -translate-y-1/2 overflow-hidden border px-2 text-left text-xs font-semibold leading-[1.375rem] transition-colors',
+              'tl-grow absolute top-1/2 h-6 min-w-[1.5rem] -translate-y-1/2 overflow-hidden border px-2 text-left text-xs font-semibold leading-[1.375rem] transition-colors',
               s.current ? 'border-ink bg-lime text-carbon' : on ? 'border-ink bg-ink/35 text-ink' : 'border-ink/30 bg-ink/10 text-ink hover:bg-ink/20',
             )}
           >
@@ -134,7 +134,7 @@ export function CareerTimeline({ data, variant = 'full', className }: CareerTime
                   aria-pressed={on}
                   aria-label={`${c.title}, ${c.org}, ${c.when}`}
                   style={{ left: x(c.at), top: dotRow.get(c.id) ? '50%' : '8%', ['--i' as string]: i }}
-                  className={cn('tl-fade group absolute flex h-5 w-5 -translate-x-1/2 items-center justify-center transition-opacity', dim && 'opacity-25')}
+                  className={cn('tl-fade group absolute flex h-6 w-6 -translate-x-1/2 items-center justify-center transition-opacity', dim && 'opacity-25')}
                 >
                   <span className={cn('h-2 w-2 rounded-full border border-ink transition-transform group-hover:scale-125', on ? 'scale-150 bg-lime' : 'bg-surface')} />
                 </button>
