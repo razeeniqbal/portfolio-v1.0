@@ -82,9 +82,11 @@ export default function ExperiencePage() {
               <TechnicalLabel as="p" marker={stageLabel(stages, current)}>
                 Current chapter
               </TechnicalLabel>
-              <OrgLogo name={current.company} className="mt-6" />
               <h2 className="mt-6 text-display-lg uppercase">{current.role}</h2>
-              <p className="mt-3 text-lead">{current.company}</p>
+              <p className="mt-3 flex items-center gap-3 text-lead">
+                <OrgLogo name={current.company} />
+                {current.company}
+              </p>
               <RoleFacts role={current} className="mt-8" />
             </header>
             <Narrative role={current} className="col-span-full lg:col-span-6 lg:col-start-7 lg:self-end" />
@@ -157,9 +159,9 @@ export default function ExperiencePage() {
               <TechnicalLabel as="p" marker={stageLabel(stages, pipelines)}>
                 {pipelines.discipline}
               </TechnicalLabel>
-              <OrgLogo name={pipelines.company} className="mt-6" />
               <h2 className="mt-6 text-display-lg uppercase">{pipelines.headline ?? pipelines.role}</h2>
-              <p className="mt-4 text-lead">
+              <p className="mt-4 flex flex-wrap items-center gap-3 text-lead">
+                <OrgLogo name={pipelines.company} />
                 {pipelines.role}, {pipelines.company}
               </p>
               <RoleFacts role={pipelines} className="mt-6" />
@@ -197,9 +199,9 @@ export default function ExperiencePage() {
               <TechnicalLabel as="p" marker={stageLabel(stages, turning)}>
                 Turning point
               </TechnicalLabel>
-              <OrgLogo name={turning.company} className="mt-6" />
               <h2 className="mt-6 max-w-[16ch] text-display-xl uppercase">{turning.headline ?? turning.role}</h2>
-              <p className="mt-6 text-lead">
+              <p className="mt-6 flex flex-wrap items-center gap-3 text-lead">
+                <OrgLogo name={turning.company} />
                 {turning.role}, {turning.company}
               </p>
               <RoleFacts role={turning} className="mt-6" />
@@ -225,9 +227,11 @@ export default function ExperiencePage() {
                 <TechnicalLabel as="p" marker={stageLabel(stages, r)}>
                   {r.discipline}
                 </TechnicalLabel>
-                <OrgLogo name={r.company} size="sm" className="mt-4" />
                 <h3 className="mt-4 text-display-sm">{r.role}</h3>
-                <p className="mt-1 text-muted">{r.company}</p>
+                <p className="mt-1 flex items-center gap-2.5 text-muted">
+                  <OrgLogo name={r.company} size="sm" />
+                  {r.company}
+                </p>
                 <RoleFacts role={r} className="mt-5" />
                 <Narrative role={r} className="mt-6 [&>p:first-child]:text-base [&>p:first-child]:text-ink" />
                 {r.progression.length > 0 && <Trajectory steps={r.progression} className="mt-6" />}

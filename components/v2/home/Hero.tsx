@@ -1,3 +1,4 @@
+import { ScrambleRotator } from './ScrambleRotator';
 import { Section } from '@/components/v2/system/Section';
 import { TechnicalLabel } from '@/components/v2/system/TechnicalLabel';
 import { ArrowLink } from '@/components/v2/system/ArrowLink';
@@ -39,7 +40,10 @@ export function Hero() {
               </span>
             ))}
           </h1>
-          <p className="mt-8 max-w-[36rem] text-lead text-muted">{profile.supporting}</p>
+          <div className="mt-6">
+            <ScrambleRotator phrases={['data pipelines', 'AI systems', 'products', 'experiments']} />
+          </div>
+          <p className="mt-6 max-w-[36rem] text-lead text-muted">{profile.supporting}</p>
         </div>
 
         <div className="col-span-full flex flex-wrap items-center gap-x-8 gap-y-5 md:col-span-5 lg:col-span-7 lg:row-start-2 lg:mt-10 lg:self-start">

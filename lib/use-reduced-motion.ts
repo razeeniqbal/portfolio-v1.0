@@ -4,7 +4,7 @@ import { useSyncExternalStore } from 'react';
 
 const query = '(prefers-reduced-motion: reduce)';
 
-/** The visitor's reduced-motion preference, kept in sync. On the server it assumes reduced motion. */
+/** The visitor's reduced-motion preference, kept in sync. On the server it assumes motion is allowed (the common case), so most pages hydrate without a swap. */
 export function usePrefersReducedMotion(): boolean {
   return useSyncExternalStore(
     (onChange) => {
@@ -13,6 +13,6 @@ export function usePrefersReducedMotion(): boolean {
       return () => mq.removeEventListener('change', onChange);
     },
     () => window.matchMedia(query).matches,
-    () => true,
+    () => false,
   );
 }

@@ -65,23 +65,23 @@ const FORMA_EXAMPLE = 'Built-in example project and sample data';
 const SVL_SESSION = '2026 Sepang race replay, recorded OpenF1 data';
 
 /**
- * Organisation logos (employers, universities), supplied by Razeen. Shown small, on a white tile so
- * they read on either surface. Matched to a company or institution name by `orgLogo`.
+ * Organisation logos (employers, universities), supplied by Razeen and reduced to single-colour marks
+ * (white removed, taglines and lockup text cropped), so they take the surrounding text colour.
+ * Matched to a company or institution name by `orgLogo`. 3Dtech's rendered 3D logo cannot be reduced
+ * to a clean mark, so it has none.
  */
 export const logos = {
-  aem: img('/assets/v2/logos/aem.webp', 480, 87, 'AEM Enersol logo'),
-  eismartwork: img('/assets/v2/logos/eismartwork.webp', 480, 136, 'EISmartwork logo'),
-  gnp: img('/assets/v2/logos/gnp.webp', 287, 240, 'G&P logo'),
-  threeDtech: img('/assets/v2/logos/3dtech.webp', 265, 240, '3Dtech Solutions logo'),
-  upm: img('/assets/v2/logos/upm.webp', 480, 220, 'Universiti Putra Malaysia logo'),
-  umpsa: img('/assets/v2/logos/umpsa.webp', 325, 240, 'Universiti Malaysia Pahang Al-Sultan Abdullah logo'),
+  aem: img('/assets/v2/logos/aem-mark.png', 360, 158, 'AEM Enersol'),
+  eismartwork: img('/assets/v2/logos/eismartwork-mark.png', 360, 102, 'EISmartwork'),
+  gnp: img('/assets/v2/logos/gnp-mark.png', 191, 160, 'G&P'),
+  upm: img('/assets/v2/logos/upm-mark.png', 144, 160, 'Universiti Putra Malaysia'),
+  umpsa: img('/assets/v2/logos/umpsa-mark.png', 109, 160, 'Universiti Malaysia Pahang Al-Sultan Abdullah'),
 };
 
 const logoMatchers: [RegExp, keyof typeof logos][] = [
   [/\bAEM\b/i, 'aem'],
   [/EISmartwork/i, 'eismartwork'],
   [/G&P/i, 'gnp'],
-  [/3Dtech/i, 'threeDtech'],
   [/Universiti Putra Malaysia|\bUPM\b/i, 'upm'],
   [/Universiti Malaysia Pahang|UMPSA/i, 'umpsa'],
 ];
