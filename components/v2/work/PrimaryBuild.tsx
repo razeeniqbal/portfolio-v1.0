@@ -94,6 +94,21 @@ export function PrimaryBuildStory({ project: p, index, titleId = `${p.slug}-titl
         </h3>
         {(p.fullName || p.tagline) && <p className="mt-2 text-lead text-muted">{p.fullName ?? p.tagline}</p>}
         <p className="mt-5 max-w-prose">{p.summary}</p>
+        {/* Real figures from the project record, as proof; illustrative ones are never shown here. */}
+        {p.metrics && p.metrics.some((m) => !m.illustrative) && (
+          <dl className="mt-6 grid grid-cols-3 gap-4">
+            {p.metrics
+              .filter((m) => !m.illustrative)
+              .slice(0, 3)
+              .map((m) => (
+                // Label first in the markup (valid dt/dd order), value shown on top.
+                <div key={m.label} className="flex flex-col-reverse">
+                  <dt className="label mt-1 text-muted">{m.label}</dt>
+                  <dd className="text-2xl font-extrabold tabular-nums leading-tight">{m.value}</dd>
+                </div>
+              ))}
+          </dl>
+        )}
 
         <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-line pt-4 text-sm">
           <div>

@@ -16,6 +16,23 @@ export interface ShowcaseBuild {
   stack: string[];
   image?: { src: string; width: number; height: number; alt: string };
   evidence?: string;
+  /** Real figures from the project record (never illustrative ones), shown as proof. */
+  metrics?: { label: string; value: string }[];
+}
+
+/** Up to three real figures, value over label. */
+function Proof({ metrics, className }: { metrics?: { label: string; value: string }[]; className?: string }) {
+  if (!metrics?.length) return null;
+  return (
+    <span className={cn('grid grid-cols-3 gap-4 border-t border-line pt-4', className)}>
+      {metrics.slice(0, 3).map((m) => (
+        <span key={m.label} className="block min-w-0">
+          <span className="block text-xl font-extrabold tabular-nums leading-tight text-ink">{m.value}</span>
+          <span className="label mt-1 block text-muted">{m.label}</span>
+        </span>
+      ))}
+    </span>
+  );
 }
 
 /**
@@ -69,6 +86,7 @@ export function BuildShowcase({ builds }: { builds: ShowcaseBuild[] }) {
                           <span key={s}>· {s}</span>
                         ))}
                       </span>
+                      <Proof metrics={b.metrics} className="mt-4" />
                     </span>
                   </span>
                 </Link>
@@ -126,6 +144,7 @@ export function BuildShowcase({ builds }: { builds: ShowcaseBuild[] }) {
               {b.origin && <p className="label mt-4 text-muted">{b.origin}</p>}
               <p className="mt-1 text-2xl font-extrabold uppercase tracking-[-0.03em]">{b.title}</p>
               <p className="mt-2 line-clamp-3 text-sm text-muted">{b.summary}</p>
+              <Proof metrics={b.metrics} className="mt-4" />
               <p className="label mt-3 flex items-center gap-2 text-muted">
                 <span aria-hidden="true" className={cn('h-1.5 w-1.5 rounded-full', b.live ? 'bg-lime' : 'border border-current')} />
                 {b.status}

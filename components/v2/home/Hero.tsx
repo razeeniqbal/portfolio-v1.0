@@ -1,4 +1,5 @@
 import { ScrambleRotator } from './ScrambleRotator';
+import { Availability } from '@/components/v2/system/Availability';
 import { Section } from '@/components/v2/system/Section';
 import { TechnicalLabel } from '@/components/v2/system/TechnicalLabel';
 import { ArrowLink } from '@/components/v2/system/ArrowLink';
@@ -53,6 +54,7 @@ export function Hero() {
           <ArrowLink href={resumeHref} arrow="↗">
             Resume
           </ArrowLink>
+          <Availability className="basis-full" />
         </div>
 
         {/* Portrait + credentials. Top-aligned with the left column (the name label). */}

@@ -29,6 +29,7 @@ export function SelectedBuilds() {
         stack: p.stack,
         image: image ? { src: image.src, width: image.width, height: image.height, alt: image.alt } : undefined,
         evidence: image?.evidence ? evidenceLabel[image.evidence] : undefined,
+        metrics: p.metrics?.filter((m) => !m.illustrative).map((m) => ({ label: m.label, value: m.value })),
       };
     });
   const total = getProjects().length;

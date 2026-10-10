@@ -2,6 +2,7 @@ import { Section } from '@/components/v2/system/Section';
 import { SectionHeader } from '@/components/v2/system/SectionHeader';
 import { ArrowLink } from '@/components/v2/system/ArrowLink';
 import { PhotoFrame } from '@/components/v2/system/PhotoFrame';
+import { Availability } from '@/components/v2/system/Availability';
 import { CopyButton } from '@/components/v2/system/CopyButton';
 import { TechnicalLabel } from '@/components/v2/system/TechnicalLabel';
 import { assets } from '@/lib/assets';
@@ -49,9 +50,10 @@ export function ContactBlock({ index = '11', surface = 'dark', title = ['Have so
     <Section surface={surface} grid={surface === 'dark'}>
       <div className="page-grid gap-y-10">
         <SectionHeader index={index} eyebrow="Contact" title={title} size="xl" className="lg:col-span-9" />
-        <p className="col-span-full text-lead text-muted md:col-span-5 lg:col-span-5">
-          Have an idea, project, opportunity, or interesting problem?
-        </p>
+        <div className="col-span-full space-y-4 md:col-span-5 lg:col-span-5">
+          <p className="text-lead text-muted">Have an idea, project, opportunity, or interesting problem?</p>
+          <Availability />
+        </div>
         <div className="col-span-full flex flex-wrap items-center gap-x-8 gap-y-5">
           <ArrowLink href="/contact" variant="primary">
             Connect
